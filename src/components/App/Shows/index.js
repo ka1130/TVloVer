@@ -1,5 +1,8 @@
 import React from 'react';
 
+import imgMissing from '../../../images/img_missing.png';
+import Show from './Show';
+
 import styles from './Shows.module.scss';
 
 const Shows = (props) => {
@@ -8,12 +11,12 @@ const Shows = (props) => {
     <div>
       <p>Shows</p>
       <ul className={styles.showsList}>
-        <figure>
-          <img src='' alt='' />
-          <figcaption>
-            <h5>Title</h5>
-          </figcaption>
-        </figure>
+        {props.shows.map(
+          ({id, name, show}) => <Show
+                                  key={id}
+                                  name={name}
+                                  imgUrl={show.image ? show.image.medium : imgMissing}/>
+          )}
       </ul>
     </div>
   );
