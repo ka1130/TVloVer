@@ -2,7 +2,8 @@ import React from 'react';
 
 import styles from './Shows.module.scss';
 
-const Shows = () => {
+const Shows = (props) => {
+  console.log(props.shows);
   return (
     <div>
       <p>Shows</p>
