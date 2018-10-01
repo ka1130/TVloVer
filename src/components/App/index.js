@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+
 import Header from './Header';
+import Shows from './Shows';
 
 import styles from './App.module.scss';
 
@@ -8,6 +10,7 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
+        <Shows />
       </div>
     );
   }
