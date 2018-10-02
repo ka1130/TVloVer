@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import loading from '../../images/loading.gif';
 import Header from './Header';
-import Shows from './Shows';
+import EpisodesList from './EpisodesList';
 
 import styles from './App.module.scss';
 
@@ -58,7 +58,7 @@ class App extends Component {
         <Header/>
         { this.state._loading
           ? <img alt="loading" src={loading} className={styles.loading} />
-          : <Shows shows={this.state.shows}/>
+          : <EpisodesList shows={this.state.shows}/>
         }
       </div>
     );
