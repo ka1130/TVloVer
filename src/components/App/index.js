@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import * as api from 'constants/apiQueries';
 
-import loading from 'images/loading.gif';
-import Header from './Header';
 import EpisodesList from './EpisodesList';
+import Header from './Header';
+import Spinner from './Spinner';
 
 import styles from './App.module.scss';
 
@@ -54,7 +54,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { this.state._loading
-          ? <img alt="loading" src={loading} className={styles.loading} />
+          ? <Spinner />
           : <EpisodesList shows={this.state.shows} day={today}/>
         }
       </div>
