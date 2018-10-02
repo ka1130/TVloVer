@@ -25,7 +25,6 @@ class Show extends Component {
 
   render() {
     const { name, imgUrl } = this.state;
-    console.log(this.props);
     return (
       <li className={styles.showListElement}>
         <figure>
