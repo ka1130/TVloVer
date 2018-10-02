@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import * as api from 'constants/apiQueries';
 
-import EpisodesList from './EpisodesList';
-import Header from './Header';
-import Spinner from './Spinner';
+import EpisodesList from 'components/App/EpisodesList';
+import Header from 'components/App/Header';
+import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
 
