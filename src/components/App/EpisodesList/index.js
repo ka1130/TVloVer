@@ -12,7 +12,7 @@ const EpisodesList = (props) => {
       <ul className={styles.showsList}>
         {props.shows.map(
           ({id, name, show}) => <Show
-                                  key={id}
+                                  key={id + name}
                                   name={name}
                                   imgUrl={show.image ? show.image.medium : imgMissing}/>
           )}
