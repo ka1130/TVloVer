@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import loading from '../../images/loading.gif';
+import loading from 'images/loading.gif';
 import Header from './Header';
 import EpisodesList from './EpisodesList';
 
@@ -42,7 +42,6 @@ class App extends Component {
       })
       .then(shows => {
         this.setState({ _loading: false, shows });
-        console.log(this.state.shows);
       })
       .catch(error => this.setState({ _loading: false, error }));
   }

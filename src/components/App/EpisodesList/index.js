@@ -1,6 +1,6 @@
 import React from 'react';
 
-import imgMissing from '../../../images/img_missing.png';
+import imgMissing from 'images/img_missing.png';
 import Show from './Show';
 
 import styles from './EpisodesList.module.scss';
