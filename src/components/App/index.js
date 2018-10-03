@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import moment from 'moment';
 import * as api from 'constants/apiQueries';
+import { format } from 'date-fns';
 
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
@@ -8,7 +8,7 @@ import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
 
-const today = moment().format('YYYY-MM-DD');
+const today = format(new Date(), 'YYYY-MM-DD');
 
 class App extends Component {
   constructor(props) {
