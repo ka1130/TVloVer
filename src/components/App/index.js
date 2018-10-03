@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ _loading: true });
+    this.setState({ loading: true });
     this.sendQuery(api.API_BASE + api.DATE_BASE + today + api.COUNTRY_BASE + api.DEFAULT_COUNTRY);
   }
 
@@ -39,9 +39,9 @@ class App extends Component {
         }
       })
       .then(shows => {
-        this.setState({ _loading: false, shows });
+        this.setState({ loading: false, shows });
       })
-      .catch(error => this.setState({ _loading: false, error }));
+      .catch(error => this.setState({ loading: false, error }));
   }
 
   render() {
@@ -53,7 +53,7 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        { this.state._loading
+        { this.state.loading
           ? <Spinner />
           : <EpisodesList shows={this.state.shows} day={today}/>
         }
