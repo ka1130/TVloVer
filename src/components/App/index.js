@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { simpleAction } from 'redux/actions/simpleAction'
+
 import * as api from 'constants/apiQueries';
 import { format } from 'date-fns';
 
@@ -44,6 +47,10 @@ class App extends Component {
       .catch(error => this.setState({ loading: false, error }));
   }
 
+  simpleAction = (event) => {
+    this.props.simpleAction();
+   }
+
   render() {
     const { error } = this.state;
     if (error) {
@@ -53,6 +60,8 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
+        <button onClick={this.simpleAction}>Test redux action</button>
+        <pre>{JSON.stringify(this.props)}</pre>
         { this.state.loading
           ? <Spinner />
           : <EpisodesList shows={this.state.shows} day={today}/>
@@ -62,4 +71,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  simpleAction: () => dispatch(simpleAction())
+ });
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
