@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { simpleAction } from 'redux/actions/simpleAction'
+import { fetchEpisodes } from 'redux/actions/fetchEpisodes';
 
 import * as api from 'constants/apiQueries';
 import { format } from 'date-fns';
@@ -47,11 +47,13 @@ class App extends Component {
       .catch(error => this.setState({ loading: false, error }));
   }
 
-  simpleAction = (event) => {
-    this.props.simpleAction();
+  fetchEpisodes = (event) => {
+    console.log(event)
+    this.props.fetchEpisodes();
    }
 
   render() {
+    console.log(this.props);
     const { error } = this.state;
     if (error) {
       return <p>{error.message}</p>;
@@ -60,7 +62,7 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        <button onClick={this.simpleAction}>Test redux action</button>
+        <button onClick={this.fetchEpisodes}>Test fetch episodes action</button>
         <pre>{JSON.stringify(this.props)}</pre>
         { this.state.loading
           ? <Spinner />
@@ -76,7 +78,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
+  fetchEpisodes: () => dispatch(fetchEpisodes())
  });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
