@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Show.module.scss';
 
@@ -35,6 +36,11 @@ class Show extends Component {
      </li>
     );
   }
+}
+
+Show.propTypes = {
+  name: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
 }
 
 export default Show;
