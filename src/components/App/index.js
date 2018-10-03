@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import moment from 'moment';
 import * as api from 'constants/apiQueries';
+import { format } from 'date-fns';
 
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
@@ -8,7 +8,7 @@ import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
 
-const today = moment().format('YYYY-MM-DD');
+const today = format(new Date(), 'YYYY-MM-DD');
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ _loading: true });
+    this.setState({ loading: true });
     this.sendQuery(api.API_BASE + api.DATE_BASE + today + api.COUNTRY_BASE + api.DEFAULT_COUNTRY);
   }
 
@@ -39,9 +39,9 @@ class App extends Component {
         }
       })
       .then(shows => {
-        this.setState({ _loading: false, shows });
+        this.setState({ loading: false, shows });
       })
-      .catch(error => this.setState({ _loading: false, error }));
+      .catch(error => this.setState({ loading: false, error }));
   }
 
   render() {
@@ -53,7 +53,7 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        { this.state._loading
+        { this.state.loading
           ? <Spinner />
           : <EpisodesList shows={this.state.shows} day={today}/>
         }
