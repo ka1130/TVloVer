@@ -1,0 +1,15 @@
+.showsList {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+}
+
+.showsHeading {
+  margin-top: 2rem;
+}
+
+.date {
+  font-weight: normal;
+}
