@@ -5,8 +5,9 @@ export function episodesActions() {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        dispatch(fetchEpisodesSuccess(json.episodes));
-        return json.episodes;
+        console.log(json)
+        dispatch(fetchEpisodesSuccess(json));
+        return json;
       })
       .catch(error => dispatch(fetchEpisodesFailure(error)));
   };

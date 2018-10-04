@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import imgMissing from 'images/img_missing.png';
 import Show from 'components/App/EpisodesList/Show';
@@ -22,16 +22,16 @@ const EpisodesList = (props) => {
   );
 }
 
-EpisodesList.propTypes = {
-  episodes: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    show: PropTypes.shape({
-      image: PropTypes.shape({
-        medium: PropTypes.string,
-      }),
-    }),
-  })).isRequired,
-};
+// EpisodesList.propTypes = {
+//   episodes: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number,
+//     name: PropTypes.string,
+//     show: PropTypes.shape({
+//       image: PropTypes.shape({
+//         medium: PropTypes.string,
+//       }),
+//     }),
+//   })).isRequired,
+// };
 
 export default EpisodesList;
