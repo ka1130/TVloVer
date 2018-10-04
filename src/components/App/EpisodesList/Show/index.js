@@ -9,10 +9,9 @@ class Show extends Component {
     imgUrl: '',
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps) {
     let saveImgUrl = nextProps.imgUrl;
 
-    /* https has to be added manually to avoid mixed content issues during deployment */
     if (!saveImgUrl.includes('https')) {
       saveImgUrl = saveImgUrl.replace('http', 'https');
     }
@@ -38,9 +37,14 @@ class Show extends Component {
   }
 }
 
+Show.defaultProps = {
+  name: '',
+  imgUrl: '',
+}
+
 Show.propTypes = {
-  name: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  imgUrl: PropTypes.string,
 }
 
 export default Show;
