@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import fetchEpisodes from 'redux/reducers/fetchEpisodes';
+import fetchEpisodes from 'redux/reducers/fetchEpisodesReducer';
 
 const rootReducer = combineReducers({
-  fetchEpisodes,
+  episodes: fetchEpisodes,
 });
 
 export default rootReducer;
