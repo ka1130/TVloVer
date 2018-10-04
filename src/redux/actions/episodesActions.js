@@ -1,3 +1,9 @@
+import {
+  FETCH_EPISODES_BEGIN,
+  FETCH_EPISODES_SUCCESS,
+  FETCH_EPISODES_FAILURE
+} from 'redux/actions/types';
+
 export function fetchEpisodes() {
   return dispatch => {
     dispatch(fetchEpisodesBegin());
@@ -19,10 +25,6 @@ function handleErrors(response) {
   }
   return response;
 }
-
-export const FETCH_EPISODES_BEGIN   = 'FETCH_EPISODES_BEGIN';
-export const FETCH_EPISODES_SUCCESS = 'FETCH_EPISODES_SUCCESS';
-export const FETCH_EPISODES_FAILURE = 'FETCH_EPISODES_FAILURE';
 
 export const fetchEpisodesBegin = () => ({
   type: FETCH_EPISODES_BEGIN

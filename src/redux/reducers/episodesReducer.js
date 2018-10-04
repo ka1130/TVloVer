@@ -2,7 +2,7 @@ import {
   FETCH_EPISODES_BEGIN,
   FETCH_EPISODES_SUCCESS,
   FETCH_EPISODES_FAILURE
-} from 'redux/actions/episodesActions';
+} from 'redux/actions/types';
 
 const initialState = {
   episodes: [],
