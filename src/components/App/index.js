@@ -18,7 +18,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      shows: [],
+      episodes: [],
       loading: false,
       error: null,
     }
@@ -41,14 +41,13 @@ class App extends Component {
           throw new Error('Something went wrong...');
         }
       })
-      .then(shows => {
-        this.setState({ loading: false, shows });
+      .then(episodes => {
+        this.setState({ loading: false, episodes });
       })
       .catch(error => this.setState({ loading: false, error }));
   }
 
-  fetchEpisodes = (event) => {
-    console.log(event)
+  fetchEpisodes = () => {
     this.props.fetchEpisodes();
    }
 
@@ -66,7 +65,7 @@ class App extends Component {
         <pre>{JSON.stringify(this.props)}</pre>
         { this.state.loading
           ? <Spinner />
-          : <EpisodesList shows={this.state.shows} day={today}/>
+          : <EpisodesList episodes={this.state.episodes} day={today}/>
         }
       </div>
     );
