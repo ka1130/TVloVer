@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchEpisodes } from 'redux/actions/fetchEpisodes';
+import { episodesActions } from 'redux/actions/episodesActions';
 
 import * as api from 'constants/apiQueries';
 import { format } from 'date-fns';
@@ -47,8 +47,8 @@ class App extends Component {
       .catch(error => this.setState({ loading: false, error }));
   }
 
-  fetchEpisodes = () => {
-    this.props.fetchEpisodes();
+  episodesActions = () => {
+    this.props.episodesActions();
    }
 
   render() {
@@ -61,7 +61,7 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        <button onClick={this.fetchEpisodes}>Test fetch episodes action</button>
+        <button onClick={this.episodesActions}>Test fetch episodes action</button>
         <pre>{JSON.stringify(this.props)}</pre>
         { this.state.loading
           ? <Spinner />
@@ -72,12 +72,21 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  ...state
-});
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    episodes: state.episodes
+  // This props: <EpisodesList episodes={newState}
+  // The action takes in the whole application's state, the entire thing
+  // Whatever is returned will show up as props inside of children (EpisodesList)
+  // The returned object will be equal to this.props in EpisodesList
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
-  fetchEpisodes: () => dispatch(fetchEpisodes())
+  episodesActions: () => dispatch(episodesActions())
  });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+// this produces a container
+// export default connect(mapStateToProps)(App);
