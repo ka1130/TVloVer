@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import * as api from 'constants/apiQueries';
-import { format } from 'date-fns';
+import { today } from 'constants/apiQueries';
 
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
@@ -11,10 +10,7 @@ import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
 
-const today = format(new Date(), 'YYYY-MM-DD');
-
 class App extends Component {
-  
   componentDidMount() {
     this.props.dispatch(fetchEpisodes());
   }

@@ -14,8 +14,8 @@ const EpisodesList = (props) => {
       <ul className={styles.showsList}>
         {props.episodes.map(
           (element) => <Show
-                          key={element.show.id + element.show.name}
-                          name={element.show.name}
+                          key={element.id}
+                          name={element.name}
                           imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
           )}
       </ul>

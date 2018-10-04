@@ -4,14 +4,15 @@ import {
   FETCH_EPISODES_FAILURE
 } from 'redux/actions/types';
 
+import * as api from 'constants/apiQueries';
+
 export function fetchEpisodes() {
   return dispatch => {
     dispatch(fetchEpisodesBegin());
-    return fetch("http://api.tvmaze.com/search/shows?q=girls")
+    return fetch(api.API_BASE + api.DATE_BASE + api.today + api.COUNTRY_BASE + api.DEFAULT_COUNTRY)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log(json)
         dispatch(fetchEpisodesSuccess(json));
         return json;
       })
