@@ -1,26 +1,40 @@
-// export default (state = {}, action) => {
-//   switch (action.type) {
-//     case 'FETCH_EPISODES_REQUEST':
-//       return {
-//         result: action.payload
-//       }
-//     case 'FETCH_EPISODES_SUCCESS':
-//       return {
-//         result: action.payload
-//       }
-//     case 'FETCH_EPISODES_FAILURE':
-//       return {
-//         result: action.payload
-//       }      
-//    default:
-//     return state
-//   }
-//  }
-export default () => {
-  return [
-    { title: 'JavScript: The Good Parts' },
-    { title: 'Harry Potter' },
-    { title: 'The Dark Tower' },
-    { title: 'Eloquent Ruby' },
-  ];
+import {
+  FETCH_EPISODES_BEGIN,
+  FETCH_EPISODES_SUCCESS,
+  FETCH_EPISODES_FAILURE
+} from 'redux/actions/episodesActions';
+
+const initialState = {
+  episodes: [],
+  loading: false,
+  error: null
+};
+
+export default function fetchEpisodes(state = initialState, action) {
+  switch(action.type) {
+    case FETCH_EPISODES_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+
+    case FETCH_EPISODES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        episodes: action.payload.episodes
+      };
+
+    case FETCH_EPISODES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        episodes: []
+      };
+
+    default:
+      return state;
+  }
 }

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { episodesActions } from 'redux/actions/episodesActions';
-
+import { bindActionCreators } from 'redux';
 import * as api from 'constants/apiQueries';
 import { format } from 'date-fns';
+
+import { episodesActions } from 'redux/actions/episodesActions';
 
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
@@ -52,7 +53,7 @@ class App extends Component {
    }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.episodes);
     const { error } = this.state;
     if (error) {
       return <p>{error.message}</p>;
@@ -62,6 +63,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         <button onClick={this.episodesActions}>Test fetch episodes action</button>
+        <button onClick={() => this.props.episodes}>Test App: this.props.episodes</button>
         <pre>{JSON.stringify(this.props)}</pre>
         { this.state.loading
           ? <Spinner />
@@ -76,6 +78,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     episodes: state.episodes
+  // whenever the changes - after reponse from API for example - this state rerenders and the state object will be sent as props to the component
   // This props: <EpisodesList episodes={newState}
   // The action takes in the whole application's state, the entire thing
   // Whatever is returned will show up as props inside of children (EpisodesList)
@@ -83,9 +86,15 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  episodesActions: () => dispatch(episodesActions())
- });
+// const mapDispatchToProps = (dispatch) => ({
+//   episodesActions: () => dispatch(episodesActions())
+//  });
+
+// Anything returned from this function will end up as props on the EpisodesList container
+// so now we can call this.props.episodes on the App component
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ episodes: episodesActions }, dispatch);
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // this produces a container
