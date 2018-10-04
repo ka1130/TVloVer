@@ -1,4 +1,4 @@
-export function episodesActions() {
+export function fetchEpisodes() {
   return dispatch => {
     dispatch(fetchEpisodesBegin());
     return fetch("http://api.tvmaze.com/search/shows?q=girls")
