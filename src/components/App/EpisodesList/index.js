@@ -7,7 +7,6 @@ import Show from 'components/App/EpisodesList/Show';
 import styles from './EpisodesList.module.scss';
 
 const EpisodesList = (props) => {
-  console.log(props.episodes)
   return (
     <div>
       <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
