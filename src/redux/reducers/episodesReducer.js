@@ -5,6 +5,7 @@ import {
 } from 'redux/actions/types';
 
 const initialState = {
+  data: [],
   episodes: [],
   loading: false,
   error: null
@@ -23,7 +24,8 @@ export default function fetchEpisodes(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        episodes: action.payload.episodes
+        data: action.payload,
+        episodes: action.payload.episodes,
       };
 
     case FETCH_EPISODES_FAILURE:
@@ -31,7 +33,7 @@ export default function fetchEpisodes(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        episodes: []
+        data: []
       };
 
     default:

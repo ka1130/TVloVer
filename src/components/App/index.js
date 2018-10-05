@@ -31,9 +31,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  episodes: state.episodes.episodes,
-  loading: state.episodes.loading,
-  error: state.episodes.error
+  episodes: state.data.episodes,
+  loading: state.data.loading,
+  error: state.data.error
 });
 
 export default connect(mapStateToProps)(App);

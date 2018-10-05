@@ -7,6 +7,7 @@ import Show from 'components/App/EpisodesList/Show';
 import styles from './EpisodesList.module.scss';
 
 const EpisodesList = (props) => {
+  console.log(props)
   return (
     <div>
       <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
@@ -16,7 +17,7 @@ const EpisodesList = (props) => {
                           key={element.id}
                           name={element.name}
                           imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
-          )}
+        )}
       </ul>
     </div>
   );
