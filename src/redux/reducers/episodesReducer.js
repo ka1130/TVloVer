@@ -5,7 +5,7 @@ import {
 } from 'redux/actions/types';
 
 const initialState = {
-  data: [],
+  // data: [],
   episodes: [],
   loading: false,
   error: null
@@ -24,7 +24,7 @@ export default function data(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: action.payload,
+        // data: action.payload,
         episodes: action.payload.episodes,
       };
 
@@ -33,7 +33,7 @@ export default function data(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        data: []
+        // data: []
       };
 
     default:
