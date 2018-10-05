@@ -15,6 +15,7 @@ const EpisodesList = (props) => {
           (element) => <Show
                           key={element.id}
                           name={element.name}
+                          summary={element.summary}
                           imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
         )}
       </ul>
