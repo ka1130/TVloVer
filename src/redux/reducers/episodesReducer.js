@@ -5,7 +5,6 @@ import {
 } from 'redux/actions/types';
 
 const initialState = {
-  // data: [],
   episodes: [],
   loading: false,
   error: null
@@ -24,7 +23,6 @@ export default function data(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        // data: action.payload,
         episodes: action.payload.episodes,
       };
 
@@ -33,10 +31,13 @@ export default function data(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        // data: []
       };
 
     default:
       return state;
   }
 }
+
+// this whole state object returned will end up as value to the data key, which is the name we gave when importing this file
+// to the rootReducer: data: data or simpler just data (same key and value name)
+// so we'll have state.episodes under data.episodes etc.
