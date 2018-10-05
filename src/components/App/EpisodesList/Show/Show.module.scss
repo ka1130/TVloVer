@@ -7,22 +7,6 @@
   }
 }
 
-.showMoreButton {
-  margin: 0 auto;
-  border: 0;
-  color: #fff;
-  background-color: rgba(159, 177, 188, 1);
-  width: 8rem;
-  height: 2rem;
-  font-size: 0.7rem;
-  font-weight: bold;
-  border-radius: 1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  &:active, &:focus {
-    outline: 0;
-  }
-  &:hover {
-    background-color: rgba(110, 136, 152, 1);;
-  }
+.showTitle {
+  height: 3.5rem;
 }

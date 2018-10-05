@@ -6,7 +6,7 @@
   margin: 1rem auto;
   border: 0;
   color: #fff;
-  background-color: #666;
+  background-color: rgba(159, 177, 188, 1);
   width: 8rem;
   height: 2rem;
   font-size: 0.7rem;
@@ -16,6 +16,9 @@
   cursor: pointer;
   &:active, &:focus {
     outline: 0;
+  }
+  &:hover {
+    background-color: rgba(110, 136, 152, 1);;
   }
 }
 

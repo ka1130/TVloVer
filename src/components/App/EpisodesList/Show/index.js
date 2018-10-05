@@ -38,7 +38,7 @@ class Show extends Component {
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
-            <h5>{name}</h5>
+            <h5 className={styles.showTitle}>{name}</h5>
             <Details summary={summary} toggleDetails={this.toggleDetails} detailsShown={detailsShown} />
           </figcaption>
         </figure>

@@ -17,10 +17,9 @@ const Details = props => {
         {props.summary ? props.summary.replace('<p>','').replace('</p>','') : ''}
       </p>
       {/* The below button will be a Link */}
-      <button className={`${props.detailsShown ? styles.visible : ''} ${styles.showPageButton}`}>Go to the show's page</button>
+      <button className={`${props.detailsShown ? styles.visible : ''} ${styles.showPageButton}`}>Go to the show’s page</button>
     </div>
   );
 }
 
 export default Details;
-{/* <div className={`${props.summary ? styles.visible : ''} ${styles.detailsWrapper}`}> */}
