@@ -11,7 +11,7 @@ const initialState = {
   error: null
 };
 
-export default function fetchEpisodes(state = initialState, action) {
+export default function data(state = initialState, action) {
   switch(action.type) {
     case FETCH_EPISODES_BEGIN:
       return {
