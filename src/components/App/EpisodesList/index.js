@@ -11,19 +11,19 @@ const EpisodesList = (props) => {
     <div>
       <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
       <ul className={styles.showsList}>
-        {props.shows.map(
-          ({id, name, show}) => <Show
-                                  key={id + name}
-                                  name={name}
-                                  imgUrl={show.image ? show.image.medium : imgMissing}/>
-          )}
+        {props.episodes.map(
+          (element) => <Show
+                          key={element.id}
+                          name={element.name}
+                          imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
+        )}
       </ul>
     </div>
   );
 }
 
 EpisodesList.propTypes = {
-  shows: PropTypes.arrayOf(PropTypes.shape({
+  episodes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
     show: PropTypes.shape({
