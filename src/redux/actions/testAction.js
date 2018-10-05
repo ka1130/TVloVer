@@ -1,3 +1,3 @@
-export const testAction = () => {
-  console.log('click');
+export const testAction = (e) => {
+  console.log('click', e.target);
 }

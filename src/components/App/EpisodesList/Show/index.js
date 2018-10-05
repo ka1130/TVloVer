@@ -32,6 +32,7 @@ class Show extends Component {
             <h5>{name}</h5>
           </figcaption>
         </figure>
+        <button className={styles.showMoreButton}>Show more</button>
      </li>
     );
   }
