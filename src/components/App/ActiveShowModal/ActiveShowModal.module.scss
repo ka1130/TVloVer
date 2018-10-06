@@ -30,12 +30,12 @@
   font-weight: bold;
   margin-top: -1.25rem;
   border: 0;
-  background-color: transparent;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
   cursor: pointer;
+  background-color: transparent;
+  &:hover, &:focus, &:active {
+    color: #000;
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+  }
 }

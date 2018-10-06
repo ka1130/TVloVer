@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { hideDetails } from 'redux/actions/showDetailsAction';
+import { hideDetails } from 'redux/actions/detailsActions';
 
 import styles from './ActiveShowModal.module.scss';
 

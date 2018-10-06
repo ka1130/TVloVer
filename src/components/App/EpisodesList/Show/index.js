@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { showDetails } from 'redux/actions/showDetailsAction';
+import { showDetails } from 'redux/actions/detailsActions';
 
 import styles from './Show.module.scss';
 
