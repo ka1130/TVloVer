@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { hideDetails } from 'redux/actions/showDetailsAction';
 
 import styles from './ActiveShowModal.module.scss';
 
-const ActiveShowModal = () => {
-  return (
-    <div className={styles.modalWrapper}>
-      <div className={styles.modalContent}>
-        <button
-          className={styles.close}
-          onClick={() => {}}
-        >
-          &times;
-        </button>
-         <p>Modal Content here</p>
+class ActiveShowModal extends Component {
+  render() {
+    const { isVisible } = this.props;
+    return (
+      <div className={`${isVisible ? styles.visible : ''} ${styles.modalWrapper}`}>
+        <div className={styles.modalContent}>
+          <button
+            className={styles.close}
+            onClick={() => this.props.hideDetails()}
+          >
+            &times;
+          </button>
+           <p>Modal Content here</p>
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 }
 
-export default ActiveShowModal;
+const mapStateToProps = state => ({
+  activeShow: state.activeShow
+});
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ hideDetails }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveShowModal);

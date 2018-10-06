@@ -1,10 +1,17 @@
-import { SHOW_SELECTED } from 'redux/actions/types';
+import { SHOW_SELECTED, NO_SHOW_SELECTED } from 'redux/actions/types';
 
 export const showDetails = show => {
   console.log('show details', show);
   return {
     type: SHOW_SELECTED,
     payload: show
+  }
+}
+
+export const hideDetails = () => {
+  return {
+    type: NO_SHOW_SELECTED,
+    payload: null
   }
 }
 

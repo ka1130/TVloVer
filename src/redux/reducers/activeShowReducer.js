@@ -1,4 +1,4 @@
-import { SHOW_SELECTED } from 'redux/actions/types';
+import { SHOW_SELECTED, NO_SHOW_SELECTED} from 'redux/actions/types';
 
 export default function(state = null, action) {
   switch(action.type) {
@@ -7,6 +7,8 @@ export default function(state = null, action) {
         ...state,
         activeShow: action.payload
       };
+    case NO_SHOW_SELECTED:
+      return null;
     default:
       return state;
   }

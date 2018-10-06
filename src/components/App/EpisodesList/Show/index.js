@@ -33,9 +33,9 @@ const mapStateToProps = state => ({
   activeShow: state.activeShow
 });
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ showDetails }, dispatch);
-}
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ showDetails }, dispatch)
+);
 
 Show.defaultProps = {
   name: '',

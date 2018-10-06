@@ -20,24 +20,22 @@ class App extends Component {
   }
 
   render() {
-    const { error, loading, episodes } = this.props;
+    const { error, loading, episodes, activeShow } = this.props;
     if (error) {
       return <p>{error.message}</p>;
     }
 
-    console.log(this.props.activeShow === null);
     return (
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
-        <ActiveShowModal />
+        <ActiveShowModal isVisible={activeShow !== null}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state.activeShow);
   return {
     activeShow: state.activeShow,
     episodes: state.data.episodes,
