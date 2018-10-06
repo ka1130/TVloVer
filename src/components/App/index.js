@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { today } from 'constants/apiQueries';
 
 import { fetchEpisodes } from 'redux/actions/episodesActions';
-import { testAction } from 'redux/actions/testAction';
 
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
@@ -28,7 +27,6 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        <button onClick={testAction}>Click me!</button>
         { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
       </div>
     );
