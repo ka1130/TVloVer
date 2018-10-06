@@ -7,6 +7,7 @@ import { today } from 'constants/apiQueries';
 
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
+import ActiveShowModal from 'components/App/ActiveShowModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
 import Spinner from 'components/App/Spinner';
@@ -24,20 +25,26 @@ class App extends Component {
       return <p>{error.message}</p>;
     }
 
+    console.log(this.props.activeShow === null);
     return (
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
+        <ActiveShowModal />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  episodes: state.data.episodes,
-  loading: state.data.loading,
-  error: state.data.error
-});
+const mapStateToProps = state => {
+  console.log(state.activeShow);
+  return {
+    activeShow: state.activeShow,
+    episodes: state.data.episodes,
+    loading: state.data.loading,
+    error: state.data.error
+  };
+};
 
 export default connect(mapStateToProps)(App);
 // our App has now the following props: dispatch: fn, episodes array, error: obj and loading: bool

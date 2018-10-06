@@ -1,10 +1,6 @@
 import { SHOW_SELECTED } from 'redux/actions/types';
 
-const initialState = {
-  activeShow: null,
-};
-
-export default function(state = initialState, action) {
+export default function(state = null, action) {
   switch(action.type) {
     case SHOW_SELECTED:
       return {

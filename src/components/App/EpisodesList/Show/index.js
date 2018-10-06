@@ -29,11 +29,9 @@ class Show extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    activeShow: state.activeShow
-  }
-}
+const mapStateToProps = state => ({
+  activeShow: state.activeShow
+});
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ showDetails }, dispatch);
