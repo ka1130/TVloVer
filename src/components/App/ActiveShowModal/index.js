@@ -8,7 +8,7 @@ import styles from './ActiveShowModal.module.scss';
 
 class ActiveShowModal extends Component {
   render() {
-    const { isVisible } = this.props;
+    const { isVisible, activeShow } = this.props;
     return (
       <div className={`${isVisible ? styles.visible : ''} ${styles.modalWrapper}`}>
         <div className={styles.modalContent}>
@@ -18,7 +18,12 @@ class ActiveShowModal extends Component {
           >
             &times;
           </button>
-           <p>Modal Content here</p>
+          <h5 className={styles.showTitle}>
+            {activeShow ? activeShow.activeShow.name : ''}
+          </h5>
+          <p className={styles.summary}>
+            {activeShow ? activeShow.activeShow.summary : 'No summary available'}
+          </p>
         </div>
       </div>
     );

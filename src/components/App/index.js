@@ -29,7 +29,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
-        <ActiveShowModal isVisible={activeShow !== null}/>
+        <ActiveShowModal isVisible={activeShow !== null} activeShow={activeShow}/>
       </div>
     );
   }
