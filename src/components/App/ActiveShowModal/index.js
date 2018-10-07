@@ -7,6 +7,7 @@ import { hideDetails } from 'redux/actions/detailsActions';
 import styles from './ActiveShowModal.module.scss';
 
 class ActiveShowModal extends Component {
+  
   render() {
     const { isVisible, activeShow } = this.props;
     return (
@@ -22,7 +23,7 @@ class ActiveShowModal extends Component {
             {activeShow ? activeShow.activeShow.name : ''}
           </h5>
           <p className={styles.summary}>
-            {activeShow ? activeShow.activeShow.summary : 'No summary available'}
+            {activeShow && activeShow.activeShow.summary ? activeShow.activeShow.summary : 'No summary available'}
           </p>
         </div>
       </div>
