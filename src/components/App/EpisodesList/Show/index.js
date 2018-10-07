@@ -10,12 +10,19 @@ import styles from './Show.module.scss';
 class Show extends Component {
   render() {
     const { name, imgUrl, show } = this.props;
+    const summary = show.summary 
+                      ? show.summary.replace('<p>','').replace('</p>','').replace('<b>','').replace('</b>','')
+                      // strip the summary from HTML tags parsed as plain text
+                      : 'No summary available';
     return (
       <li className={styles.showListElement}>
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
-            <h5>{name}</h5>
+            <details>
+              <summary>{name}</summary>
+              <p>{summary}</p>
+            </details>
           </figcaption>
         </figure>
         <button
