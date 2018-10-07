@@ -9,8 +9,7 @@ import * as api from 'constants/apiQueries';
 export function fetchEpisodes() {
   return dispatch => {
     dispatch(fetchEpisodesBegin());
-    // return fetch(api.API_BASE + api.DATE_BASE + api.today + api.COUNTRY_BASE + api.DEFAULT_COUNTRY + api.PAGE_BASE + api.DEFAULT_PAGE)
-    return fetch(`http://api.tvmaze.com/shows?page=2/schedule?country=US&date=2014-12-01`)
+    return fetch(api.API_BASE + api.PAGE_BASE + api.DEFAULT_PAGE + api.COUNTRY_BASE + api.DEFAULT_COUNTRY + api.DATE_BASE + api.today)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

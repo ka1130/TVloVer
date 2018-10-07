@@ -1,9 +1,11 @@
 import { format } from 'date-fns';
 
-export const today = format(new Date(), 'YYYY-MM-DD');
-export const API_BASE = 'https://api.tvmaze.com'
-export const DATE_BASE = '/schedule?date=';
-export const COUNTRY_BASE = '&country=';
+export const API_BASE = 'https://api.tvmaze.com/shows'
+export const PAGE_BASE = '?page=';
+export const DEFAULT_PAGE = '1';
+
+export const COUNTRY_BASE = '/schedule?country=';
 export const DEFAULT_COUNTRY = 'US';
-export const PAGE_BASE = '&page=';
-export const DEFAULT_PAGE = '2';
+
+export const DATE_BASE = '&date=';
+export const today = format(new Date(), 'YYYY-MM-DD');
