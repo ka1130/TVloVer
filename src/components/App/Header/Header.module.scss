@@ -1,17 +1,16 @@
+@import 'styles/base/_palette.scss';
+
 .appHeader {
-  background-color: #333;
+  background-color: $burgundy;
   background-image: url('../../../images/tv.png');
+  background-blend-mode: soft-light;
   background-repeat: no-repeat;
   background-position: 20% 50%;
-  opacity: 0.5;
   height: 8rem;
   padding: 2rem;
-  color: #fff;
+  color: $white-smoke;
   margin: 0.5rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
   text-align: center;
-
   p {
     text-transform: uppercase;
     letter-spacing: 0.25rem;

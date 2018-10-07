@@ -1,41 +1,48 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { showDetails } from 'redux/actions/detailsActions';
 
 import styles from './Show.module.scss';
 
 class Show extends Component {
-  state = {
-    name: '',
-    imgUrl: '',
-  };
-
-  static getDerivedStateFromProps(nextProps) {
-    let saveImgUrl = nextProps.imgUrl;
-
-    if (!saveImgUrl.includes('https')) {
-      saveImgUrl = saveImgUrl.replace('http', 'https');
-    }
-
-    return {
-      name: nextProps.name,
-      imgUrl: saveImgUrl,
-    }
-  }
-
   render() {
-    const { name, imgUrl } = this.state;
+    const { name, imgUrl, show } = this.props;
+    const summary = show.summary 
+                      ? show.summary.replace('<p>','').replace('</p>','').replace('<b>','').replace('</b>','')
+                      // strip the summary from HTML tags parsed as plain text
+                      : 'No summary available';
     return (
       <li className={styles.showListElement}>
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
-            <h5>{name}</h5>
+            <details>
+              <summary>{name}</summary>
+              <p>{summary}</p>
+            </details>
           </figcaption>
         </figure>
+        <button
+          className={styles.showMoreButton}
+          onClick={() => this.props.showDetails(show)}
+        >
+          Show more
+        </button>
      </li>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  activeShow: state.activeShow
+});
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ showDetails }, dispatch)
+);
 
 Show.defaultProps = {
   name: '',
@@ -47,4 +54,4 @@ Show.propTypes = {
   imgUrl: PropTypes.string,
 }
 
-export default Show;
+export default connect(mapStateToProps, mapDispatchToProps)(Show);
