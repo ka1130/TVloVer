@@ -24,7 +24,6 @@ class App extends Component {
 
   render() {
     const { error, loading, episodes, activeShow } = this.props;
-    const defaultPage = 1;
 
     if (error) {
       return <p>{error.message}</p>;
@@ -34,7 +33,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
-        <Pagination handlePageChange={() => this.props.currentPage(defaultPage)}/>
+        <Pagination handlePageChange={(e) => this.props.currentPage(Number(e.target.id))}/>
         <ActiveShowModal isVisible={activeShow !== null} activeShow={activeShow}/>
       </div>
     );
