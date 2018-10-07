@@ -1,0 +1,15 @@
+@import 'styles/base/_palette.scss';
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  li {
+    margin: 0 1rem;
+    font-weight: bold;
+    color: $pewter-blue;
+    cursor: pointer;
+    &:hover {
+      color: $wine-dregs;
+    }
+  }
+}

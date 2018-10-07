@@ -10,6 +10,7 @@ import { fetchEpisodes } from 'redux/actions/episodesActions';
 import ActiveShowModal from 'components/App/ActiveShowModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
+import Pagination from 'components/App/Pagination';
 import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
@@ -29,6 +30,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
+        <Pagination />
         <ActiveShowModal isVisible={activeShow !== null} activeShow={activeShow}/>
       </div>
     );

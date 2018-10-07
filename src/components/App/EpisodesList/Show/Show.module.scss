@@ -1,3 +1,5 @@
+@import 'styles/base/_palette.scss';
+
 .showListElement {
   flex-basis: 5rem;
   padding: 1.5rem;
@@ -11,8 +13,8 @@
 .showMoreButton {
   margin: 0 auto;
   border: 0;
-  color: #fff;
-  background-color: rgba(159, 177, 188, 1);
+  color: $white-smoke;
+  background-color: $pewter-blue;;
   width: 8rem;
   height: 2rem;
   font-size: 0.7rem;
@@ -24,6 +26,6 @@
     outline: 0;
   }
   &:hover {
-    background-color: rgba(110, 136, 152, 1);;
+    background-color: $wine-dregs;
   }
 }

@@ -9,7 +9,7 @@ import * as api from 'constants/apiQueries';
 export function fetchEpisodes() {
   return dispatch => {
     dispatch(fetchEpisodesBegin());
-    return fetch(api.API_BASE + api.PAGE_BASE + api.DEFAULT_PAGE + api.COUNTRY_BASE + api.DEFAULT_COUNTRY + api.DATE_BASE + api.today)
+    return fetch(api.API_BASE + api.COUNTRY_BASE + api.DEFAULT_COUNTRY + api.DATE_BASE + api.today)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
