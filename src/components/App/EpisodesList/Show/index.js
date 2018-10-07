@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import Details from 'components/App/EpisodesList/Show/Details';
+
 import styles from './Show.module.scss';
 
 class Show extends Component {
   state = {
+    detailsShown: false,
     name: '',
     imgUrl: '',
+    summary: '',
   };
 
   static getDerivedStateFromProps(nextProps) {
@@ -18,18 +22,24 @@ class Show extends Component {
 
     return {
       name: nextProps.name,
+      summary: nextProps.summary,
       imgUrl: saveImgUrl,
     }
   }
 
+  toggleDetails = () => {
+    this.setState({ detailsShown: !this.state.detailsShown });
+  }
+
   render() {
-    const { name, imgUrl } = this.state;
+    const { name, imgUrl, detailsShown, summary } = this.state;
     return (
       <li className={styles.showListElement}>
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
-            <h5>{name}</h5>
+            <h5 className={styles.showTitle}>{name}</h5>
+            <Details summary={summary} toggleDetails={this.toggleDetails} detailsShown={detailsShown} />
           </figcaption>
         </figure>
      </li>
