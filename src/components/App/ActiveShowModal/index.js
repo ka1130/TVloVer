@@ -11,6 +11,7 @@ class ActiveShowModal extends Component {
   
   render() {
     const { isVisible, activeShow } = this.props;
+    console.log(this.props);
     return (
       <div className={`${isVisible ? styles.visible : ''} ${styles.modalWrapper}`}>
         <div className={styles.modalContent}>
@@ -22,7 +23,7 @@ class ActiveShowModal extends Component {
           </button>
           <figure>
             <img
-              src={activeShow && activeShow.activeShow.show.image.medium ? activeShow.activeShow.show.image.medium : imgMissing}
+              src={activeShow && activeShow.activeShow.image.medium ? activeShow.activeShow.image.medium : imgMissing}
               alt="" />
             <figcaption>
               <h5 className={styles.showTitle}>

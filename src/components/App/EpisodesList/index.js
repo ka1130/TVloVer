@@ -16,7 +16,7 @@ const EpisodesList = (props) => {
                           show={element}
                           key={element.id}
                           name={element.name}
-                          imgUrl={element.show.image ? element.show.image.medium : imgMissing}
+                          imgUrl={element.image ? element.image.medium : imgMissing}
                         />
         )}
       </ul>
