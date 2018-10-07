@@ -30,7 +30,8 @@ class ActiveShowModal extends Component {
               </h5>
               <p className={styles.summary}>
                 {activeShow && activeShow.activeShow.summary ? activeShow.activeShow.summary : 'No summary available'}
-              </p>              
+              </p>
+              <a className={styles.link} href="#">Go to the show's page</a>              
             </figcaption>
           </figure>
         </div>

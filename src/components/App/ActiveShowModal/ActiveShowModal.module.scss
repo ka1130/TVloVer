@@ -32,7 +32,7 @@
 }
 
 .summary {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   font-style: oblique;
 }
 
@@ -65,4 +65,12 @@
     border: 0;
     outline: 0;
   }
+}
+
+.link {
+  display: block;
+  color: rgba(46, 82, 102, 1);
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 1rem;
 }
