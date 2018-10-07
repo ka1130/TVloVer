@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // through this react-redux bridge this component gets promoted to a container which is a "smart component"
@@ -6,21 +6,36 @@ import { connect } from 'react-redux';
 import { today } from 'constants/apiQueries';
 
 import { fetchEpisodes } from 'redux/actions/episodesActions';
-import { testAction } from 'redux/actions/testAction';
 
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
+import Pagination from 'components/App/Pagination';
 import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
 
 class App extends Component {
+  state = {
+    currentPage: 1,
+    episodesPerPage: 12
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchEpisodes());
   }
 
+  handlePageChange = event => {
+    this.setState({ currentPage: Number(event.target.id)});
+  }
+
   render() {
     const { error, loading, episodes } = this.props;
+    const { currentPage, episodesPerPage } = this.state;
+
+    const indexOfLastEpisode = currentPage * episodesPerPage;
+    const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
+    const currentEpisodes = episodes.slice(indexOfFirstEpisode, indexOfLastEpisode);
+
     if (error) {
       return <p>{error.message}</p>;
     }
@@ -28,8 +43,8 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        <button onClick={testAction}>Click me!</button>
-        { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
+        { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today}/> }
+        <Pagination episodes={episodes} episodesPerPage={episodesPerPage} handlePageChange={this.handlePageChange}/>
       </div>
     );
   }
