@@ -1,7 +1,6 @@
 import { SHOW_SELECTED, NO_SHOW_SELECTED } from 'redux/actions/types';
 
 export const showDetails = show => {
-  // console.log('show details', show);
   return {
     type: SHOW_SELECTED,
     payload: show

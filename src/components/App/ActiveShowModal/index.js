@@ -11,7 +11,6 @@ class ActiveShowModal extends Component {
   
   render() {
     const { isVisible, activeShow } = this.props;
-    console.log(this.props);
     return (
       <div className={`${isVisible ? styles.visible : ''} ${styles.modalWrapper}`}>
         <div className={styles.modalContent}>
@@ -37,7 +36,7 @@ class ActiveShowModal extends Component {
                     : 'No summary available'
                 }
               </p>
-              <a className={styles.link} href="#">Go to the show's page</a>              
+              <a className={styles.link} href="#">Go to the show’s page</a>              
             </figcaption>
           </figure>
         </div>
