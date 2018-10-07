@@ -16,23 +16,6 @@ import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
 
-// const { todos, currentPage, todosPerPage } = this.state;
-
-// Logic for displaying current todos
-/* const indexOfLastTodo = currentPage * todosPerPage;
-const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
-const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
-
-const renderTodos = currentTodos.map((todo, index) => {
-  return <li key={index}>{todo}</li>;
-});
-
-// Logic for displaying page numbers
-const pageNumbers = [];
-for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
-  pageNumbers.push(i);
-} */
-
 class App extends Component {
   componentDidMount() {
     this.props.fetchEpisodes();
@@ -40,14 +23,12 @@ class App extends Component {
 
   render() {
     const { error, loading, episodes, activeShow } = this.props;
-    const currentPage = this.props;
-    console.log(currentPage);
-    // const episodesPerPage = 12; //arbitrary number, fits nicely into various screen widths
-    // const indexOfLastEpisode = parseInt(currentPage) * episodesPerPage;
-    // const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
+    const { currentPage } = this.props.currentPage;
+    const episodesPerPage = 12; //arbitrary number, fits nicely into various screen widths
+    const indexOfLastEpisode = parseInt(currentPage) * episodesPerPage;
+    const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
     
-    // const currentEpisodes = episodes.slice(indexOfFirstEpisode, indexOfLastEpisode);
-    // console.log(currentPage, indexOfFirstEpisode, indexOfLastEpisode, currentEpisodes);
+    const currentEpisodes = episodes.slice(indexOfFirstEpisode, indexOfLastEpisode);
 
     if (error) {
       return <p>{error.message}</p>;
@@ -56,7 +37,7 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        { loading ? <Spinner /> : <EpisodesList episodes={episodes} day={today}/> }
+        { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today}/> }
         <Pagination />
         <ActiveShowModal isVisible={activeShow !== null} activeShow={activeShow}/>
       </div>
@@ -70,6 +51,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => ({
   activeShow: state.activeShow,
+  currentPage: state.currentPage,
   episodes: state.data.episodes,
   loading: state.data.loading,
   error: state.data.error
