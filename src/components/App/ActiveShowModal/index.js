@@ -30,7 +30,12 @@ class ActiveShowModal extends Component {
                 {activeShow ? activeShow.activeShow.name : ''}
               </h5>
               <p className={styles.summary}>
-                {activeShow && activeShow.activeShow.summary ? activeShow.activeShow.summary : 'No summary available'}
+                {
+                  activeShow && activeShow.activeShow.summary
+                    ? activeShow.activeShow.summary.replace('<p>','').replace('</p>','').replace('<b>','').replace('</b>','')
+                    // strip the summary from HTML tags parsed as plain text
+                    : 'No summary available'
+                }
               </p>
               <a className={styles.link} href="#">Go to the show's page</a>              
             </figcaption>
