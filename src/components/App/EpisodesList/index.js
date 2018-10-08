@@ -6,12 +6,11 @@ import Show from 'components/App/EpisodesList/Show';
 
 import styles from './EpisodesList.module.scss';
 
-const EpisodesList = (props) => {
-  return (
-    <div>
-      <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
+const renderEpisodesList = (episodes, imgPath) => {
+  if (episodes.length) {
+    return (
       <ul className={styles.showsList}>
-        {props.episodes.map(
+        {episodes.map(
           (element) => <Show
                           key={element.id}
                           name={element.name}
@@ -19,6 +18,17 @@ const EpisodesList = (props) => {
                           imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
         )}
       </ul>
+    );
+  } else {
+    return <p className={styles.nothingFound}>Sorry, there's nothing on TV today. Go read a book for Pete's sake!</p>;
+  }
+}
+
+const EpisodesList = props => {
+  return (
+    <div>
+      <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
+      {renderEpisodesList(props.episodes)}
     </div>
   );
 }
