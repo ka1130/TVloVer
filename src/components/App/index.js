@@ -7,6 +7,7 @@ import { today } from 'constants/apiQueries';
 
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
+import ActiveShowModal from 'components/App/ActiveShowModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
 import Pagination from 'components/App/Pagination';
@@ -17,7 +18,8 @@ import styles from './App.module.scss';
 class App extends Component {
   state = {
     currentPage: 1,
-    episodesPerPage: 12
+    episodesPerPage: 12,
+    isModalVisible: false,
   }
 
   componentDidMount() {
@@ -28,9 +30,13 @@ class App extends Component {
     this.setState({ currentPage: Number(event.target.id)});
   }
 
+  closeModal = () => {
+    this.setState({ isModalVisible: false });
+  }
+
   render() {
     const { error, loading, episodes } = this.props;
-    const { currentPage, episodesPerPage } = this.state;
+    const { currentPage, episodesPerPage, isModalVisible } = this.state;
 
     const indexOfLastEpisode = currentPage * episodesPerPage;
     const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
@@ -45,6 +51,8 @@ class App extends Component {
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today}/> }
         <Pagination episodes={episodes} episodesPerPage={episodesPerPage} handlePageChange={this.handlePageChange} currentPage={currentPage}/>
+        <ActiveShowModal isVisible={isModalVisible} hideDetails={this.closeModal} />
+        {/* <ActiveShowModal isVisible={activeShow !== null} activeShow={activeShow}/> */}
       </div>
     );
   }
