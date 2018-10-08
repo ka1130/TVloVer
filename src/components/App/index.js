@@ -44,7 +44,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today}/> }
-        <Pagination episodes={episodes} episodesPerPage={episodesPerPage} handlePageChange={this.handlePageChange}/>
+        <Pagination episodes={episodes} episodesPerPage={episodesPerPage} handlePageChange={this.handlePageChange} currentPage={currentPage}/>
       </div>
     );
   }
