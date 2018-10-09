@@ -8,7 +8,7 @@ import styles from './Pagination.module.scss';
 
 class Pagination extends Component {
   renderPageNumbers = () => {
-    const { episodes, getCurrentPage, episodesPerPage } = this.props;
+    const { episodes, currentPage, getCurrentPage, episodesPerPage } = this.props;
 
     let pageNumbers = [];
     let i = 1;
@@ -18,8 +18,7 @@ class Pagination extends Component {
       number => <li key={number}
                     id={number}
                     onClick={e => getCurrentPage(Number(e.target.id))}
-                    // why isn't the below working?
-                    className={getCurrentPage === number ? `${styles.active}` : ''}
+                    className={currentPage === number ? `${styles.active}` : ''}
                     >
                       {number}
                     </li>
