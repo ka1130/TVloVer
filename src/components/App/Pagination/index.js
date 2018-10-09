@@ -37,6 +37,7 @@ class Pagination extends Component {
 const mapStateToProps = state => ({
   episodes: state.data.episodes,
   currentPage: state.getCurrentPage.currentPage,
+  episodesPerPage: state.getCurrentPage.episodesPerPage,
 });
 
 const mapDispatchToProps = dispatch => (

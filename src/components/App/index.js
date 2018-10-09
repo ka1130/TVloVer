@@ -15,7 +15,6 @@ import styles from './App.module.scss';
 
 class App extends Component {
   state = {
-    // episodesPerPage: 12,
     isModalVisible: false,
     activeEpisode: null,
   }
@@ -37,9 +36,8 @@ class App extends Component {
   }
 
   render() {
-    const { error, loading, episodes, currentPage } = this.props;
+    const { error, loading, episodes, currentPage, episodesPerPage } = this.props;
     const {isModalVisible, activeEpisode } = this.state;
-    const episodesPerPage = 12; //arbitrary number, fits nicely into various screen widths
     const indexOfLastEpisode = parseInt(currentPage) * episodesPerPage;
     const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
     
@@ -66,6 +64,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => ({
   currentPage: state.getCurrentPage.currentPage,
+  episodesPerPage: state.getCurrentPage.episodesPerPage,
   episodes: state.data.episodes,
   loading: state.data.loading,
   error: state.data.error
