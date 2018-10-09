@@ -53,7 +53,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today} openModal={this.openModal}/> }
-        <Pagination episodes={episodes} episodesPerPage={episodesPerPage}/>
+        <Pagination episodesPerPage={episodesPerPage}/>
         <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
       </div>
     );
@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => (
 );
 
 const mapStateToProps = state => ({
-  currentPage: state.currentPage.currentPage,
+  currentPage: state.getCurrentPage.currentPage,
   episodes: state.data.episodes,
   loading: state.data.loading,
   error: state.data.error
