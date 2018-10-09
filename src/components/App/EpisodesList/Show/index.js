@@ -34,7 +34,7 @@ class Show extends Component {
   render() {
     const { name, imgUrl, detailsShown, summary } = this.state;
     return (
-      <li className={styles.showListElement}>
+      <li className={styles.showListElement} onClick={this.props.openModal}>
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
@@ -55,6 +55,7 @@ Show.defaultProps = {
 Show.propTypes = {
   name: PropTypes.string,
   imgUrl: PropTypes.string,
+  openModal: PropTypes.func.isRequired,
 }
 
 export default Show;

@@ -7,7 +7,7 @@ import { today } from 'constants/apiQueries';
 
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
-import ActiveShowModal from 'components/App/ActiveShowModal';
+import ActiveEpisodeModal from 'components/App/ActiveEpisodeModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Header from 'components/App/Header';
 import Pagination from 'components/App/Pagination';
@@ -20,6 +20,7 @@ class App extends Component {
     currentPage: 1,
     episodesPerPage: 12,
     isModalVisible: false,
+    activeEpisode: null,
   }
 
   componentDidMount() {
@@ -30,13 +31,21 @@ class App extends Component {
     this.setState({ currentPage: Number(event.target.id)});
   }
 
-  closeModal = () => {
-    this.setState({ isModalVisible: false });
+  openModal = (episode) => {
+    this.setState({ 
+      isModalVisible: true,
+      activeEpisode: episode
+    });
+  }
+
+  closeModal = event => {
+    const { id } = event.target;
+    if (id === "modalBg" || id === "closeModal") this.setState({ isModalVisible: false })
   }
 
   render() {
     const { error, loading, episodes } = this.props;
-    const { currentPage, episodesPerPage, isModalVisible } = this.state;
+    const { currentPage, episodesPerPage, isModalVisible, activeEpisode} = this.state;
 
     const indexOfLastEpisode = currentPage * episodesPerPage;
     const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
@@ -49,10 +58,9 @@ class App extends Component {
     return (
       <div className={styles.appWrapper}>
         <Header/>
-        { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today}/> }
+        { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today} openModal={this.openModal}/> }
         <Pagination episodes={episodes} episodesPerPage={episodesPerPage} handlePageChange={this.handlePageChange} currentPage={currentPage}/>
-        <ActiveShowModal isVisible={isModalVisible} hideDetails={this.closeModal} />
-        {/* <ActiveShowModal isVisible={activeShow !== null} activeShow={activeShow}/> */}
+        <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
       </div>
     );
   }

@@ -14,7 +14,7 @@ class Pagination extends Component {
       number => <li key={number}
                     id={number}
                     onClick={handlePageChange}
-                    className={currentPage == number ? `${styles.active}` : ''}
+                    className={currentPage === number ? `${styles.active}` : ''}
                     >
                       {number}
                     </li>

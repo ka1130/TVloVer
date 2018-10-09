@@ -6,7 +6,7 @@ import Show from 'components/App/EpisodesList/Show';
 
 import styles from './EpisodesList.module.scss';
 
-const renderEpisodesList = (episodes, imgPath) => {
+const renderEpisodesList = (episodes, func) => {
   if (episodes.length) {
     return (
       <ul className={styles.showsList}>
@@ -15,6 +15,7 @@ const renderEpisodesList = (episodes, imgPath) => {
                           key={element.id}
                           name={element.name}
                           summary={element.summary}
+                          openModal={() => func(element)}
                           imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
         )}
       </ul>
@@ -25,10 +26,11 @@ const renderEpisodesList = (episodes, imgPath) => {
 }
 
 const EpisodesList = props => {
+  const { episodes, openModal } = props;
   return (
     <div>
       <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
-      {renderEpisodesList(props.episodes)}
+      {renderEpisodesList(episodes, openModal)}
     </div>
   );
 }
@@ -43,6 +45,7 @@ EpisodesList.propTypes = {
       }),
     }),
   })).isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default EpisodesList;
