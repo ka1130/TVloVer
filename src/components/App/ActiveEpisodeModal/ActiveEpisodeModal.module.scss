@@ -1,3 +1,5 @@
+@import 'styles/base/_palette.scss';
+
 .modalWrapper {
   display: none;
   position: fixed;
@@ -27,13 +29,27 @@
     }
     h5 {
       margin-bottom: 1rem;
+      color: $smoky-black;
+      font-size: 1.25rem;
+      line-height: 1.5rem;
     }
+  }
+}
+
+.emissionTime {
+  color: $pewter-blue;
+  font-weight: bold;
+  padding: 0 0 2rem 0;
+  font-size: 0.9rem;
+  span {
+    margin: 0.25rem;
   }
 }
 
 .summary {
   margin-bottom: 3rem;
   font-style: oblique;
+  color: $pewter-darker
 }
 
 .modalWrapper.visible {
@@ -69,7 +85,7 @@
 
 .link {
   display: block;
-  color: rgba(46, 82, 102, 1);
+  color: $burgundy;
   font-weight: bold;
   text-decoration: underline;
   margin-bottom: 1rem;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 
 import imgMissing from 'images/img_missing.png';
 
@@ -20,12 +21,16 @@ const ActiveEpisodeModal = props => {
         </button>
         <figure>
           <img
-            src={activeEpisode && activeEpisode.image ? activeEpisode.image : imgMissing}
+            src={activeEpisode && activeEpisode.show.image ? activeEpisode.show.image.medium : imgMissing}
             alt={activeEpisode ? activeEpisode.name : ''} />
           <figcaption>
             <h5 className={styles.showTitle}>
               {activeEpisode ? activeEpisode.name : ''}
             </h5>
+            <p className={styles.emissionTime}>
+              <span className={styles.date}>{activeEpisode ? format(activeEpisode.airdate,'MMMM Do, YYYY') : ''}</span>
+              <span className={styles.time}>{activeEpisode ? activeEpisode.airtime : ''}</span>
+            </p>
             <p className={styles.summary}>
               {
                 activeEpisode && activeEpisode.summary
