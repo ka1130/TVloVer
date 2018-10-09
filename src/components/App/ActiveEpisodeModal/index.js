@@ -8,7 +8,6 @@ import styles from './ActiveEpisodeModal.module.scss';
 
 const ActiveEpisodeModal = props => {
   const { isVisible, activeEpisode, hideDetails } = props;
-  console.log(activeEpisode);
   return (
     <div className={`${isVisible ? styles.visible : ''} ${styles.modalWrapper}`} onClick={hideDetails} id="modalBg">
       <div className={styles.modalContent}>
