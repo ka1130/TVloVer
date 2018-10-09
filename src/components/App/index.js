@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { today } from 'constants/apiQueries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
@@ -14,18 +15,13 @@ import styles from './App.module.scss';
 
 class App extends Component {
   state = {
-    currentPage: 1,
-    episodesPerPage: 12,
+    // episodesPerPage: 12,
     isModalVisible: false,
     activeEpisode: null,
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchEpisodes());
-  }
-
-  handlePageChange = event => {
-    this.setState({ currentPage: Number(event.target.id)});
+    this.props.fetchEpisodes();
   }
 
   openModal = (episode) => {
@@ -41,11 +37,12 @@ class App extends Component {
   }
 
   render() {
-    const { error, loading, episodes } = this.props;
-    const { currentPage, episodesPerPage, isModalVisible, activeEpisode} = this.state;
-
-    const indexOfLastEpisode = currentPage * episodesPerPage;
+    const { error, loading, episodes, currentPage } = this.props;
+    const {isModalVisible, activeEpisode } = this.state;
+    const episodesPerPage = 12; //arbitrary number, fits nicely into various screen widths
+    const indexOfLastEpisode = parseInt(currentPage) * episodesPerPage;
     const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
+    
     const currentEpisodes = episodes.slice(indexOfFirstEpisode, indexOfLastEpisode);
 
     if (error) {
@@ -56,20 +53,25 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <Header/>
         { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today} openModal={this.openModal}/> }
-        <Pagination episodes={episodes} episodesPerPage={episodesPerPage} handlePageChange={this.handlePageChange} currentPage={currentPage}/>
+        <Pagination episodes={episodes} episodesPerPage={episodesPerPage}/>
         <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
       </div>
     );
   }
 }
 
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ fetchEpisodes }, dispatch)
+);
+
 const mapStateToProps = state => ({
+  currentPage: state.currentPage.currentPage,
   episodes: state.data.episodes,
   loading: state.data.loading,
   error: state.data.error
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 // our App has now the following props: dispatch: fn, episodes array, error: obj and loading: bool
 // we pass down the App's episodes prop to EpisodesList via <EpisodesList episodes={episodes} > 
 // so EpisodesList can also read what episodes are
