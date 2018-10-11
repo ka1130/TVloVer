@@ -7,11 +7,11 @@ import imgMissing from 'images/img_missing.png';
 
 import styles from './ActiveEpisodeModal.module.scss';
 
-const episodeImage = episode => episode && episode.show.image ? episode.show.image.medium : imgMissing;
-const episodeName = episode => episode && episode.name ? episode.name : '';
-const episodeDate = episode => episode && episode.airdate ? format(episode.airdate,'MMMM Do, YYYY') : '';
-const episodeTime = episode => episode && episode.airtime ? episode.airtime : '';
-const episodeSummary = episode => episode && episode.summary
+const episodeImage = episode => episode.show.image ? episode.show.image.medium : imgMissing;
+const episodeName = episode => episode.name ? episode.name : '';
+const episodeDate = episode => episode.airdate ? format(episode.airdate,'MMMM Do, YYYY') : '';
+const episodeTime = episode => episode.airtime ? episode.airtime : '';
+const episodeSummary = episode => episode.summary
                       ? episode.summary.replace('<p>','').replace('</p>','').replace('<b>','').replace('</b>','')
                       : 'No summary available';
 
@@ -21,6 +21,8 @@ const ActiveEpisodeModal = props => {
   let modalClass = cx(styles.modalWrapper, {
     [styles.visible]: isVisible,
   });
+
+  if (!activeEpisode) return null
 
   return (
     <div className={modalClass} onClick={hideDetails} id="modalBg">

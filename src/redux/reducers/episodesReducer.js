@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   episodes: [],
+  episodesPerPage: 12,
   loading: false,
   error: null,
 };
@@ -34,7 +35,9 @@ export default function data(state = initialState, action) {
       };
 
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 }
 

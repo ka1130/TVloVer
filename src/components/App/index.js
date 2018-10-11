@@ -64,7 +64,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => ({
   currentPage: state.getCurrentPage.currentPage,
-  episodesPerPage: state.getCurrentPage.episodesPerPage,
+  episodesPerPage: state.data.episodesPerPage,
   episodes: state.data.episodes,
   loading: state.data.loading,
   error: state.data.error
