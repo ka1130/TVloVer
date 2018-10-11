@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import pagination from 'redux/selectors/paginationSelector';
 
 import { today } from 'constants/apiQueries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
@@ -37,13 +38,9 @@ class App extends Component {
   }
 
   render() {
-    const { error, loading, episodes, currentPage } = this.props;
+    const { error, loading, currentEpisodes } = this.props;
     const { episodesPerPage } = this.state;
-    const {isModalVisible, activeEpisode } = this.state;
-    const indexOfLastEpisode = parseInt(currentPage) * episodesPerPage;
-    const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
-    
-    const currentEpisodes = episodes.slice(indexOfFirstEpisode, indexOfLastEpisode);
+    const { isModalVisible, activeEpisode } = this.state;
 
     if (error) {
       return <p>{error.message}</p>;
@@ -64,15 +61,18 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({ fetchEpisodes }, dispatch)
 );
 
-const mapStateToProps = state => ({
-  currentPage: state.getCurrentPage.currentPage,
-  episodesPerPage: state.data.episodesPerPage,
-  episodes: state.data.episodes,
-  loading: state.data.loading,
-  error: state.data.error
-});
+const mapStateToProps = state => {
+  return {
+    currentPage: state.getCurrentPage.currentPage,
+    currentEpisodes: (pagination(state)),
+    episodes: state.data.episodes,
+    loading: state.data.loading,
+    error: state.data.error
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
 // our App has now the following props: dispatch: fn, episodes array, error: obj and loading: bool
 // we pass down the App's episodes prop to EpisodesList via <EpisodesList episodes={episodes} > 
 // so EpisodesList can also read what episodes are
