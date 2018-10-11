@@ -19,14 +19,9 @@ const episodeSummary = episode => episode && episode.summary
 
 const ActiveEpisodeModal = props => {
   const { isVisible, activeEpisode, hideDetails } = props;
-  
-  let modalClassName = cx({
-    modalWrapper: true,
-    visible: isVisible,
-  });
 
   return (
-    <div className={modalClassName} onClick={hideDetails} id="modalBg">
+    <div className={cx(styles.modalWrapper, { visible: isVisible })} onClick={hideDetails} id="modalBg">
       <div className={styles.modalContent}>
         <button className={styles.close} onClick={hideDetails} id="closeModal">
           &times;
