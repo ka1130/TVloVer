@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import classNames from 'classnames/bind';
+import cx from 'classnames';
 
 import imgMissing from 'images/img_missing.png';
 
 import styles from './ActiveEpisodeModal.module.scss';
 
-let cx = classNames.bind(styles);
 const episodeImage = episode => episode && episode.show.image ? episode.show.image.medium : imgMissing;
 const episodeName = episode => episode && episode.name ? episode.name : '';
 const episodeDate = episode => episode && episode.airdate ? format(episode.airdate,'MMMM Do, YYYY') : '';
@@ -19,9 +18,12 @@ const episodeSummary = episode => episode && episode.summary
 
 const ActiveEpisodeModal = props => {
   const { isVisible, activeEpisode, hideDetails } = props;
+  let modalClass = cx(styles.modalWrapper, {
+    [styles.visible]: isVisible,
+  });
 
   return (
-    <div className={cx(styles.modalWrapper, { visible: isVisible })} onClick={hideDetails} id="modalBg">
+    <div className={modalClass} onClick={hideDetails} id="modalBg">
       <div className={styles.modalContent}>
         <button className={styles.close} onClick={hideDetails} id="closeModal">
           &times;
