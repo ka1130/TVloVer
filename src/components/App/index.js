@@ -17,6 +17,7 @@ class App extends Component {
   state = {
     isModalVisible: false,
     activeEpisode: null,
+    episodesPerPage: 12
   }
 
   componentDidMount() {
@@ -36,7 +37,8 @@ class App extends Component {
   }
 
   render() {
-    const { error, loading, episodes, currentPage, episodesPerPage } = this.props;
+    const { error, loading, episodes, currentPage } = this.props;
+    const { episodesPerPage } = this.state;
     const {isModalVisible, activeEpisode } = this.state;
     const indexOfLastEpisode = parseInt(currentPage) * episodesPerPage;
     const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
