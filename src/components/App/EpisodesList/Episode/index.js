@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Show.module.scss';
+import styles from './Episode.module.scss';
 
-class Show extends Component {
+class Episode extends Component {
   state = {
     name: '',
     imgUrl: '',
@@ -25,11 +25,11 @@ class Show extends Component {
   render() {
     const { name, imgUrl } = this.state;
     return (
-      <li className={styles.showListElement}>
+      <li className={styles.showListElement} onClick={this.props.openModal}>
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
-            <h5>{name}</h5>
+            <h5 className={styles.showTitle}>{name}</h5>
           </figcaption>
         </figure>
      </li>
@@ -37,14 +37,15 @@ class Show extends Component {
   }
 }
 
-Show.defaultProps = {
+Episode.defaultProps = {
   name: '',
   imgUrl: '',
 }
 
-Show.propTypes = {
+Episode.propTypes = {
   name: PropTypes.string,
   imgUrl: PropTypes.string,
+  openModal: PropTypes.func.isRequired,
 }
 
-export default Show;
+export default Episode;

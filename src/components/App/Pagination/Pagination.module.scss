@@ -1,0 +1,22 @@
+@import 'styles/base/_palette.scss';
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  li {
+    margin: 0 1rem;
+    font-weight: bold;
+    color: $pewter-blue;
+    cursor: pointer;
+    &:hover {
+      color: $pewter-darker;
+    }
+    &.active {
+      background-color: $pewter-blue;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      color: $white-smoke;
+    }
+  }
+}
