@@ -39,8 +39,7 @@ class App extends Component {
 
   render() {
     const { error, loading, currentEpisodes } = this.props;
-    const { episodesPerPage } = this.state;
-    const { isModalVisible, activeEpisode } = this.state;
+    const { isModalVisible, activeEpisode, episodesPerPage } = this.state;
 
     if (error) {
       return <p>{error.message}</p>;
@@ -63,7 +62,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => {
   return {
-    currentPage: state.getCurrentPage.currentPage,
+    currentPage: state.setCurrentPage.currentPage,
     currentEpisodes: (pagination(state)),
     episodes: state.data.episodes,
     loading: state.data.loading,

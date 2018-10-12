@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getCurrentPage } from 'redux/actions/paginationActions';
+import { setCurrentPage } from 'redux/actions/paginationActions';
 
 import styles from './Pagination.module.scss';
 
 class Pagination extends Component {
   renderPageNumbers = () => {
-    const { episodes, currentPage, getCurrentPage, episodesPerPage } = this.props;
+    const { episodes, currentPage, setCurrentPage, episodesPerPage } = this.props;
 
     let pageNumbers = [];
     let i = 1;
@@ -17,7 +17,7 @@ class Pagination extends Component {
     return pageNumbers.map(
       number => <li key={number}
                     id={number}
-                    onClick={e => getCurrentPage(Number(e.target.id))}
+                    onClick={e => setCurrentPage(Number(e.target.id))}
                     className={currentPage === number ? `${styles.active}` : ''}
                     >
                       {number}
@@ -36,11 +36,11 @@ class Pagination extends Component {
 
 const mapStateToProps = state => ({
   episodes: state.data.episodes,
-  currentPage: state.getCurrentPage.currentPage,
+  currentPage: state.setCurrentPage.currentPage,
 });
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ getCurrentPage }, dispatch)
+  bindActionCreators({ setCurrentPage }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

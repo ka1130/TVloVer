@@ -4,7 +4,7 @@ const episodesPerPage = 12;
 
 export default createSelector(
   state => state.data.episodes,
-  state => state.getCurrentPage.currentPage,
+  state => state.setCurrentPage.currentPage,
   (episodesState, currentPageState) => {
     const indexOfLastEpisode = parseInt(currentPageState) * episodesPerPage;
     const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
