@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Show.module.scss';
+import styles from './Episode.module.scss';
 
-class Show extends Component {
+class Episode extends Component {
   state = {
     name: '',
     imgUrl: '',
@@ -37,15 +37,15 @@ class Show extends Component {
   }
 }
 
-Show.defaultProps = {
+Episode.defaultProps = {
   name: '',
   imgUrl: '',
 }
 
-Show.propTypes = {
+Episode.propTypes = {
   name: PropTypes.string,
   imgUrl: PropTypes.string,
   openModal: PropTypes.func.isRequired,
 }
 
-export default Show;
+export default Episode;
