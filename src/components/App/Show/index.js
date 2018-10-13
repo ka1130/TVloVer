@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
@@ -23,6 +24,7 @@ class Show extends Component {
         <img src={image.original} alt={name} className={styles.showImage}/>
         <h5>{name}</h5>
         <p>{summary}</p>
+        <Link to="/page/1" className={styles.backHome}>Back to main page</Link> 
       </div>
     );
   }

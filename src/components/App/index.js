@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { today } from 'constants/apiQueries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
+import { getCurrentEpisodes } from 'helpers/pagination'
+
 import ActiveEpisodeModal from 'components/App/ActiveEpisodeModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Pagination from 'components/App/Pagination';
@@ -44,10 +46,7 @@ class App extends Component {
     const { error, loading, episodes } = this.props;
     const { isModalVisible, activeEpisode, episodesPerPage } = this.state;
     const currentPage = this.props.match.params.page;
-
-    const indexOfLastEpisode = parseInt(currentPage, 10) * episodesPerPage;
-    const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
-    const currentEpisodes = episodes.slice(indexOfFirstEpisode, indexOfLastEpisode);
+    const currentEpisodes = getCurrentEpisodes(currentPage, episodesPerPage, episodes);
 
     if (error) {
       return <p>{error.message}</p>;
