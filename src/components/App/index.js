@@ -8,7 +8,7 @@ import { fetchEpisodes } from 'redux/actions/episodesActions';
 
 import ActiveEpisodeModal from 'components/App/ActiveEpisodeModal';
 import EpisodesList from 'components/App/EpisodesList';
-import Header from 'components/App/Header';
+// import Header from 'components/App/Header';
 import Pagination from 'components/App/Pagination';
 import Spinner from 'components/App/Spinner';
 
@@ -47,7 +47,7 @@ class App extends Component {
 
     return (
       <div className={styles.appWrapper}>
-        <Header/>
+        {/* <Header/> */}
         { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today} openModal={this.openModal}/> }
         <Pagination episodesPerPage={episodesPerPage}/>
         <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
