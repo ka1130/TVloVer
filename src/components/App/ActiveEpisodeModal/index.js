@@ -19,10 +19,10 @@ const episodeSummary = episode => episode.summary
 
 const ActiveEpisodeModal = props => {
   const { isVisible, activeEpisode, hideDetails } = props;
-  const id = 6;
 
   if (!activeEpisode) return null
-
+  console.log(activeEpisode.show.id); 
+  // f I am pulling out the wrong id? episodes id, it should be show's id
   return (
     <div className={cx(styles.modalWrapper, isVisible && styles.visible)} onClick={hideDetails} id="modalBg">
       <div className={styles.modalContent}>
@@ -38,7 +38,7 @@ const ActiveEpisodeModal = props => {
               <span className={styles.time}>{episodeTime(activeEpisode)}</span>
             </p>
             <p className={styles.summary}>{episodeSummary(activeEpisode)}</p>
-            <Link to={`/shows/${id}`} className={styles.link}>Go to the show’s page</Link>
+            <Link to={`/shows/${activeEpisode.show.id}`} className={styles.link}>Go to the show’s page</Link>
           </figcaption>
         </figure>
       </div>

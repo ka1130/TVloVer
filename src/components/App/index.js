@@ -58,15 +58,13 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({ fetchEpisodes }, dispatch)
 );
 
-const mapStateToProps = state => {
-  return {
-    currentPage: state.setCurrentPage.currentPage,
-    currentEpisodes: (pagination(state)),
-    episodes: state.data.episodes,
-    loading: state.data.loading,
-    error: state.data.error
-  }
-};
+const mapStateToProps = state => ({
+  currentPage: state.setCurrentPage.currentPage,
+  currentEpisodes: (pagination(state)),
+  episodes: state.data.episodes,
+  loading: state.data.loading,
+  error: state.data.error
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
