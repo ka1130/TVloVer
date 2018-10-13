@@ -15,13 +15,14 @@ import './index.css';
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div>
+      <>
         <Header />
         <Switch>
           <Route path="/shows/:id" component={Show} />
-          <Route exact path="/" component={App} />
+          <Route path="/page/:page" component={App} />
+          {/* <Route path="/" component={App} /> */}
         </Switch>
-      </div>
+      </>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'));

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
 
+import styles from './Show.module.scss';
+
 class Show extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -10,20 +12,17 @@ class Show extends Component {
   }
 
   render() {
-    const { id, name, image } = this.props.show;
+    const { name, image, summary } = this.props.show;
 
     if (!image) {
       return <p>Loading...</p>;
     }
 
     return (
-      <div>
-        <figure>
-          <img src={image.original} alt={name} />
-          <figcaption>
-            <h5>{name}</h5>
-          </figcaption>
-        </figure>
+      <div className={styles.showInfo}>
+        <img src={image.original} alt={name} className={styles.showImage}/>
+        <h5>{name}</h5>
+        <p>{summary}</p>
       </div>
     );
   }

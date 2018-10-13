@@ -8,7 +8,6 @@
   background-blend-mode: soft-light;
   height: 8rem;
   padding: 2rem;
-  color: $white-smoke;
   margin: 0.5rem;
   text-align: center;
 
@@ -17,10 +16,13 @@
     letter-spacing: 0.25rem;
     font-size: 0.75rem;
     font-weight: bold;
+    color: $white-smoke;
     margin: 1rem;
   }
 }
 
 .appTitle {
   font-size: 2.5rem;
+  color: $white-smoke;
+  font-weight: bold;
 }

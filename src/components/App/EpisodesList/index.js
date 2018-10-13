@@ -28,10 +28,10 @@ const renderEpisodesList = (episodes, func) => {
 const EpisodesList = props => {
   const { episodes, openModal } = props;
   return (
-    <div>
+    <>
       <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{props.day}</span></h6>
       {renderEpisodesList(episodes, openModal)}
-    </div>
+    </>
   );
 }
 

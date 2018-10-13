@@ -15,14 +15,18 @@ const episodeTime = episode => episode.airtime ? episode.airtime : '';
 const episodeSummary = episode => episode.summary
                       ? episode.summary.replace('<p>','').replace('</p>','').replace('<b>','').replace('</b>','')
                       : 'No summary available';
+const showId = episode => episode.id ? episode.id : '';
+// there's some fetching problem above, it should be 'loading...' and then fetched, possibly rewrite to a container
+// or rewrite App to EpisodesList?
 
 
 const ActiveEpisodeModal = props => {
   const { isVisible, activeEpisode, hideDetails } = props;
 
   if (!activeEpisode) return null
-  console.log(activeEpisode.show.id); 
-  // f I am pulling out the wrong id? episodes id, it should be show's id
+
+  const { id } = activeEpisode.show;
+  
   return (
     <div className={cx(styles.modalWrapper, isVisible && styles.visible)} onClick={hideDetails} id="modalBg">
       <div className={styles.modalContent}>
@@ -38,7 +42,7 @@ const ActiveEpisodeModal = props => {
               <span className={styles.time}>{episodeTime(activeEpisode)}</span>
             </p>
             <p className={styles.summary}>{episodeSummary(activeEpisode)}</p>
-            <Link to={`/shows/${activeEpisode.show.id}`} className={styles.link}>Go to the show’s page</Link>
+            <Link to={`/shows/${id}`} className={styles.link}>Go to the show’s page</Link>
           </figcaption>
         </figure>
       </div>
