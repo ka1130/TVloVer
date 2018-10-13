@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import store from 'redux/store'
 
 // import promise from 'redux-promise'; => will I need it?
@@ -20,7 +20,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/shows/:id" component={Show} />
           <Route path="/page/:page" component={App} />
-          {/* <Route path="/" component={App} /> */}
+          <Redirect exact path='/' to='/page/1'/>
         </Switch>
       </>
     </BrowserRouter>

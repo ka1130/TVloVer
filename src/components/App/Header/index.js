@@ -6,7 +6,7 @@ import styles from './Header.module.scss';
 const Header = () => {
   return (
     <header className={styles.appHeader}>
-      <Link to="/1" className={styles.appTitle}>TVloVe</Link>
+      <Link to="/page/1" className={styles.appTitle}>TVloVe</Link>
       <p>Your TV guide for today</p>
     </header>
   );

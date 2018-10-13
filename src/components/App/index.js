@@ -37,7 +37,7 @@ class App extends Component {
 
   setCurrentPage = e => {
     const id = (Number(e.target.id));
-    this.props.history.push(`/page/${id}`);
+    this.props.history.push(`${id}`);
   }
 
   render() {
