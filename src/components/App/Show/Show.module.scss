@@ -6,9 +6,9 @@
   max-width: 80%;
   margin: 2rem auto;
   h3 {
-    margin: 1rem;
     font-size: 1.5rem;
     color: $burgundy;
+    margin-bottom: 2rem;
   }
 }
 
@@ -20,9 +20,32 @@
     max-height: 24rem;
 }
 
-.summary {
+.description {
   color: $smoky-black;
   margin: 1rem;
   font-size: 0.9rem;
   line-height: 120%;
+}
+
+.summary {
+  margin-bottom: 2rem;
+}
+
+.details {
+  margin: 0.5rem 0;
+  color: $wine-dregs;
+}
+
+.time {
+  margin: 2rem 0;
+}
+
+.backHome {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  color: $pewter-darker;
 }

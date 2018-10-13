@@ -13,7 +13,9 @@ class Show extends Component {
   }
 
   render() {
-    const { name, image, summary } = this.props.show;
+    const { name, image, summary, runtime, status, type, schedule } = this.props.show;
+    const { time } = schedule || '';
+    const days  = schedule ? schedule.days.join(', ') : '';
 
     if (!image) {
       return <p>Loading...</p>;
@@ -23,10 +25,14 @@ class Show extends Component {
       <>
         <figure className={styles.showInfo}>
           <img src={image.original} alt={name} className={styles.showImage}/>
-            <figcaption>
+            <figcaption className={styles.description}>
               <h3>{name}</h3>
               <p className={styles.summary}>{summary.replace(/(<([^>]+)>)/ig,"")}</p>
               {/* the above RegExp strips summary from HTML tags parsed as plain text */}
+              <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
+              <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>
+              <p className={styles.details}><strong>STATUS: </strong>{status}</p>
+              <p className={styles.details}><strong>TYPE: </strong>{type}</p>
             </figcaption>
         </figure>
         <Link to="/page/1" className={styles.backHome}>Back to main page</Link> 
