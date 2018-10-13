@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Show = () => {
-  return (
-    <p>TEST</p>
-  );
+class Show extends Component {
+  componentDidMount() {
+    // fetching
+  }
+
+  render() {
+    return (
+      <div>
+        klk;lk
+      </div>
+    );
+  }
 }
 
 export default Show;

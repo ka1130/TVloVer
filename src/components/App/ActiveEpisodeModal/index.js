@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import cx from 'classnames';
 
@@ -18,9 +19,7 @@ const episodeSummary = episode => episode.summary
 
 const ActiveEpisodeModal = props => {
   const { isVisible, activeEpisode, hideDetails } = props;
-  // let modalClass = cx(styles.modalWrapper, {
-  //   [styles.visible]: isVisible,
-  // });
+  const id = 6;
 
   if (!activeEpisode) return null
 
@@ -39,7 +38,7 @@ const ActiveEpisodeModal = props => {
               <span className={styles.time}>{episodeTime(activeEpisode)}</span>
             </p>
             <p className={styles.summary}>{episodeSummary(activeEpisode)}</p>
-            <a className={styles.link} href="#">Go to the show’s page</a>              
+            <Link to={`/shows/${id}`} className={styles.link}>Go to the show’s page</Link>
           </figcaption>
         </figure>
       </div>
