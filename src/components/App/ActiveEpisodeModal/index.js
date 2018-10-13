@@ -23,6 +23,8 @@ class ActiveEpisodeModal extends Component {
     if (!activeEpisode) return null
   
     const { id } = activeEpisode.show;
+    const summary = activeEpisode.summary ? activeEpisode.summary.replace(/(<([^>]+)>)/ig,"") : 'No summary available'
+    {/* the above RegExp strips summary from HTML tags parsed as plain text */}
     
     return (
       <div className={cx(styles.modalWrapper, isVisible && styles.visible)} onClick={hideDetails} id="modalBg">
@@ -38,7 +40,7 @@ class ActiveEpisodeModal extends Component {
                 <span className={styles.date}>{format(activeEpisode.airdate,'MMMM Do, YYYY')}</span>
                 <span className={styles.time}>{activeEpisode.airtime}</span>
               </p>
-              <p className={styles.summary}>{activeEpisode.summary || 'No summary available'}</p>
+              <p className={styles.summary}>{summary}</p>
               <Link to={`/shows/${id}`} className={styles.link}>Go to the show’s page</Link>
             </figcaption>
           </figure>

@@ -20,12 +20,17 @@ class Show extends Component {
     }
 
     return (
-      <div className={styles.showInfo}>
-        <img src={image.original} alt={name} className={styles.showImage}/>
-        <h5>{name}</h5>
-        <p>{summary}</p>
+      <>
+        <figure className={styles.showInfo}>
+          <img src={image.original} alt={name} className={styles.showImage}/>
+            <figcaption>
+              <h3>{name}</h3>
+              <p className={styles.summary}>{summary.replace(/(<([^>]+)>)/ig,"")}</p>
+              {/* the above RegExp strips summary from HTML tags parsed as plain text */}
+            </figcaption>
+        </figure>
         <Link to="/page/1" className={styles.backHome}>Back to main page</Link> 
-      </div>
+      </>
     );
   }
 }

@@ -1,11 +1,28 @@
+@import 'styles/base/_palette.scss';
+
 .showInfo {
   display: flex;
-  flex-direction: column;
   align-items: center;
   max-width: 80%;
-  margin: 0 auto;
+  margin: 2rem auto;
+  h3 {
+    margin: 1rem;
+    font-size: 1.5rem;
+    color: $burgundy;
+  }
 }
 
 .showImage {
-  max-width: 20rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+    object-fit: contain;
+    max-height: 24rem;
+}
+
+.summary {
+  color: $smoky-black;
+  margin: 1rem;
+  font-size: 0.9rem;
+  line-height: 120%;
 }
