@@ -9,7 +9,7 @@ import * as api from 'constants/apiQueries';
 export function fetchShow(id) {
   return dispatch => {
     dispatch(fetchShowBegin());
-    return fetch(`https://api.tvmaze.com/shows/${id}`)
+    return fetch(api.API_BASE + api.SHOWS_BASE + id)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
