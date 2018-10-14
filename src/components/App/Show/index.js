@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
@@ -35,7 +35,7 @@ class Show extends Component {
               <p className={styles.details}><strong>TYPE: </strong>{type}</p>
             </figcaption>
         </figure>
-        <Link to="/page/1" className={styles.backHome}>Back to main page</Link> 
+        <button onClick={this.props.history.goBack} className={styles.backHome}>Back to episodes</button>
       </>
     );
   }
@@ -51,4 +51,4 @@ const mapStateToProps = (state) => ({
   error: state.show.error
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Show);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Show));
