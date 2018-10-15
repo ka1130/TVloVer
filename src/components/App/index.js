@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import pagination from 'redux/selectors/paginationSelector';
 
 import { today } from 'constants/apiQueries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
+import { getCurrentEpisodes } from 'helpers/pagination'
+
 import ActiveEpisodeModal from 'components/App/ActiveEpisodeModal';
 import EpisodesList from 'components/App/EpisodesList';
-import Header from 'components/App/Header';
 import Pagination from 'components/App/Pagination';
 import Spinner from 'components/App/Spinner';
 
@@ -18,7 +18,6 @@ class App extends Component {
   state = {
     isModalVisible: false,
     activeEpisode: null,
-    episodesPerPage: 12
   }
 
   componentDidMount() {
@@ -38,8 +37,11 @@ class App extends Component {
   }
 
   render() {
-    const { error, loading, currentEpisodes } = this.props;
-    const { isModalVisible, activeEpisode, episodesPerPage } = this.state;
+    const { error, loading, episodes } = this.props;
+    const { isModalVisible, activeEpisode } = this.state;
+    const episodesPerPage = 12;
+    const currentPage = this.props.match.params.page;
+    const currentEpisodes = getCurrentEpisodes(currentPage, episodesPerPage, episodes);
 
     if (error) {
       return <p>{error.message}</p>;
@@ -47,9 +49,14 @@ class App extends Component {
 
     return (
       <div className={styles.appWrapper}>
-        <Header/>
-        { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today} openModal={this.openModal}/> }
-        <Pagination episodesPerPage={episodesPerPage}/>
+        <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
+        <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
+        {
+          loading
+          ? <Spinner />
+          : <EpisodesList episodes={currentEpisodes} openModal={this.openModal}/>
+        }
+        <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
         <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
       </div>
     );
@@ -60,15 +67,11 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({ fetchEpisodes }, dispatch)
 );
 
-const mapStateToProps = state => {
-  return {
-    currentPage: state.setCurrentPage.currentPage,
-    currentEpisodes: (pagination(state)),
-    episodes: state.data.episodes,
-    loading: state.data.loading,
-    error: state.data.error
-  }
-};
+const mapStateToProps = state => ({
+  episodes: state.data.episodes,
+  loading: state.data.loading,
+  error: state.data.error
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
