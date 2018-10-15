@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
+import { strip } from 'helpers/htmlStrip';
 
 import styles from './Show.module.scss';
 
@@ -22,13 +23,13 @@ class Show extends Component {
     }
 
     return (
-      <>
+      <React.Fragment>
         <figure className={styles.showInfo}>
           <img src={image.original} alt={name} className={styles.showImage}/>
             <figcaption className={styles.description}>
               <h3>{name}</h3>
-              <p className={styles.summary}>{summary.replace(/(<([^>]+)>)/ig,"")}</p>
-              {/* the above RegExp strips summary from HTML tags parsed as plain text */}
+              <p className={styles.summary}>{strip(summary)}</p>
+              
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>
               <p className={styles.details}><strong>STATUS: </strong>{status}</p>
@@ -36,7 +37,7 @@ class Show extends Component {
             </figcaption>
         </figure>
         <button onClick={this.props.history.goBack} className={styles.backHome}>Back to episodes</button>
-      </>
+      </React.Fragment>
     );
   }
 }
