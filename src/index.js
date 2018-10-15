@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom'
+
 import store from 'redux/store'
 
 import App from './components/App';
@@ -12,7 +14,7 @@ import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <>
         <Header />
         <Switch>
@@ -21,7 +23,7 @@ ReactDOM.render(
           <Redirect exact path='/' to='/page/1'/>
         </Switch>
       </>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById('root'));
 
