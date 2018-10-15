@@ -56,6 +56,7 @@ class App extends Component {
           ? <Spinner />
           : <EpisodesList episodes={currentEpisodes} openModal={this.openModal}/>
         }
+        <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
         <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
       </div>
     );
