@@ -18,7 +18,6 @@ class App extends Component {
   state = {
     isModalVisible: false,
     activeEpisode: null,
-    episodesPerPage: 12
   }
 
   componentDidMount() {
@@ -37,14 +36,10 @@ class App extends Component {
     if (id === "modalBg" || id === "closeModal") this.setState({ isModalVisible: false })
   }
 
-  setCurrentPage = e => {
-    const id = (Number(e.target.id));
-    this.props.history.push(`${id}`);
-  }
-
   render() {
     const { error, loading, episodes } = this.props;
-    const { isModalVisible, activeEpisode, episodesPerPage } = this.state;
+    const { isModalVisible, activeEpisode } = this.state;
+    const episodesPerPage = 12;
     const currentPage = this.props.match.params.page;
     const currentEpisodes = getCurrentEpisodes(currentPage, episodesPerPage, episodes);
 
@@ -54,8 +49,13 @@ class App extends Component {
 
     return (
       <div className={styles.appWrapper}>
-        { loading ? <Spinner /> : <EpisodesList episodes={currentEpisodes} day={today} openModal={this.openModal}/> }
-        <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} setCurrentPage={this.setCurrentPage}/>
+        <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
+        <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
+        {
+          loading
+          ? <Spinner />
+          : <EpisodesList episodes={currentEpisodes} openModal={this.openModal}/>
+        }
         <ActiveEpisodeModal isVisible={isModalVisible} hideDetails={event => this.closeModal(event)} activeEpisode={activeEpisode}/>
       </div>
     );

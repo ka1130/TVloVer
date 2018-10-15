@@ -14,12 +14,17 @@ class Pagination extends Component {
     return pageNumbers.map(
       number => <li key={number}
                     id={number}
-                    onClick={this.props.setCurrentPage}
+                    onClick={this.setCurrentPage}
                     className={currentPage === number.toString() ? `${styles.active}` : ''}
                     >
                       {number}
                     </li>
                   );
+    }
+
+    setCurrentPage = e => {
+      const id = (Number(e.target.id));
+      this.props.history.push(`${id}`);
     }
 
     render() {
