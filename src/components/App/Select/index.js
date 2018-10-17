@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectEpisodes } from 'redux/actions/selectEpisodesActions';
+import { fetchEpisodes } from 'redux/actions/episodesActions';
 import PropTypes from 'prop-types';
 
 import styles from './Select.module.scss';
@@ -9,10 +9,10 @@ import styles from './Select.module.scss';
 class Select extends React.Component {
   render() {
     return (
-      <select onChange={e => this.props.onChange(e.target.value)}>
+      <select onChange={e => this.props.onChange(e.target.value)} value={this.props.value} className={styles.select}>
         {this.props.options.map(option => (
-          <option value={option} key={option}>
-            {option}
+          <option value={option.code} key={option.code}>
+            {option.name}
           </option>
         ))}
       </select>
@@ -21,7 +21,7 @@ class Select extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ selectEpisodes }, dispatch)
+  bindActionCreators({ fetchEpisodes }, dispatch)
 );
 
 const mapStateToProps = state => ({
@@ -29,7 +29,11 @@ const mapStateToProps = state => ({
 });
 
 Select.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
+  })).isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Select);

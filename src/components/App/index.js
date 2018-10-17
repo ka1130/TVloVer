@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { today } from 'constants/apiQueries';
+import { countries } from 'constants/countries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
-import { selectEpisodes } from 'redux/actions/selectEpisodesActions';
 
 import { getCurrentEpisodes } from 'helpers/pagination'
 
@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEpisodes();
+    this.props.fetchEpisodes('us');
   }
 
   openModal = (episode) => {
@@ -38,8 +38,8 @@ class App extends Component {
     if (id === "modalBg" || id === "closeModal") this.setState({ isModalVisible: false })
   }
 
-  selectEpisode = country => {
-    this.props.selectEpisodes(country);
+  selectCountry = country => {
+    this.props.fetchEpisodes(country);
   }
 
   render() {
@@ -49,7 +49,7 @@ class App extends Component {
     const currentPage = this.props.match.params.page;
     const currentEpisodes = getCurrentEpisodes(currentPage, episodesPerPage, episodes);
 
-    const countries = ['US', 'DE', 'FR', 'NL'];
+    // const countries = ['US', 'GB', 'FR', 'AU', 'NL'];
 
     if (error) {
       return <p>{error.message}</p>;
@@ -59,7 +59,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
         <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
-        <Select options={countries} onChange={this.selectEpisode}/>
+        <Select options={countries} onChange={this.selectCountry}/>
         {
           loading
           ? <Spinner />
@@ -73,11 +73,11 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ fetchEpisodes, selectEpisodes }, dispatch)
+  bindActionCreators({ fetchEpisodes }, dispatch)
 );
 
 const mapStateToProps = state => ({
-  episodes: state.selectedEpisodes.episodes,
+  episodes: state.data.episodes,
   loading: state.data.loading,
   error: state.data.error
 });
