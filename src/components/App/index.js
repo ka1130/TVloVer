@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { today } from 'constants/apiQueries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
+import { selectEpisodes } from 'redux/actions/selectEpisodesActions';
 
 import { getCurrentEpisodes } from 'helpers/pagination'
 
@@ -44,6 +45,8 @@ class App extends Component {
     const currentPage = this.props.match.params.page;
     const currentEpisodes = getCurrentEpisodes(currentPage, episodesPerPage, episodes);
 
+    const countries = ['US', 'DE', 'FR', 'NL'];
+
     if (error) {
       return <p>{error.message}</p>;
     }
@@ -52,7 +55,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
         <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
-        <Select />
+        <Select options={countries} onChange={this.props.selectEpisodes()}/>
         {
           loading
           ? <Spinner />
@@ -66,7 +69,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ fetchEpisodes }, dispatch)
+  bindActionCreators({ fetchEpisodes, selectEpisodes }, dispatch)
 );
 
 const mapStateToProps = state => ({
