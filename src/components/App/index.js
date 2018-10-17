@@ -49,8 +49,6 @@ class App extends Component {
     const currentPage = this.props.match.params.page;
     const currentEpisodes = getCurrentEpisodes(currentPage, episodesPerPage, episodes);
 
-    // const countries = ['US', 'GB', 'FR', 'AU', 'NL'];
-
     if (error) {
       return <p>{error.message}</p>;
     }

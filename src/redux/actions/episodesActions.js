@@ -1,8 +1,8 @@
 import {
-    FETCH_EPISODES_BEGIN,
-    FETCH_EPISODES_SUCCESS,
-    FETCH_EPISODES_FAILURE
-  } from 'redux/actions/types';
+  FETCH_EPISODES_BEGIN,
+  FETCH_EPISODES_SUCCESS,
+  FETCH_EPISODES_FAILURE
+} from 'redux/actions/types';
   
 import * as api from 'constants/apiQueries';
 
