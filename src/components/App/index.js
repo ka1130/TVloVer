@@ -10,6 +10,7 @@ import { getCurrentEpisodes } from 'helpers/pagination'
 import ActiveEpisodeModal from 'components/App/ActiveEpisodeModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Pagination from 'components/App/Pagination';
+import Select from 'components/App/Select';
 import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
@@ -51,6 +52,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
         <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
+        <Select />
         {
           loading
           ? <Spinner />
