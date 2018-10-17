@@ -38,6 +38,10 @@ class App extends Component {
     if (id === "modalBg" || id === "closeModal") this.setState({ isModalVisible: false })
   }
 
+  selectEpisode = country => {
+    this.props.selectEpisodes(country);
+  }
+
   render() {
     const { error, loading, episodes } = this.props;
     const { isModalVisible, activeEpisode } = this.state;
@@ -55,7 +59,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
         <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
-        <Select options={countries} onChange={this.props.selectEpisodes()}/>
+        <Select options={countries} onChange={this.selectEpisode}/>
         {
           loading
           ? <Spinner />
@@ -73,7 +77,7 @@ const mapDispatchToProps = dispatch => (
 );
 
 const mapStateToProps = state => ({
-  episodes: state.data.episodes,
+  episodes: state.selectedEpisodes.episodes,
   loading: state.data.loading,
   error: state.data.error
 });

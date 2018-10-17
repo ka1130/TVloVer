@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectEpisodes } from 'redux/actions/selectEpisodesActions';
 import PropTypes from 'prop-types';
 
 import styles from './Select.module.scss';
@@ -18,14 +20,16 @@ class Select extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ selectEpisodes }, dispatch)
+);
+
 const mapStateToProps = state => ({
   episodes: state.data.episodes,
 });
 
 Select.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(Select);
+export default connect(mapStateToProps, mapDispatchToProps)(Select);
