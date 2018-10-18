@@ -6,13 +6,15 @@ import styles from './Select.module.scss';
 class Select extends React.Component {
   render() {
     return (
-      <select onChange={e => this.props.onChange(e.target.value)} value={this.props.value} className={styles.customSelect}>
-        {this.props.options.map(option => (
-          <option value={option.code} key={option.code}>
-            {option.name}
-          </option>
-        ))}
-      </select>
+      <div className={styles.selectWrapper}>
+        <select onChange={e => this.props.onChange(e.target.value)} value={this.props.value} className={styles.select}>
+          {this.props.options.map(option => (
+            <option value={option.code} key={option.code}>
+              {option.name}
+            </option>
+          ))}
+        </select>      
+      </div>
     );
   }
 }
