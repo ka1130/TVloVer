@@ -23,6 +23,7 @@
       border-radius: 0.5rem;
       border: 0.25rem solid #fff;
       box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.2);
+      height: 12rem;
     }
     h5 {
       margin-bottom: 1rem;
@@ -57,7 +58,7 @@
   background-color: #fefefe;
   margin: 0 auto;
   padding: 1rem;
-  width: 80%;
+  width: 90%;
   max-width: 25rem;
   position: relative;
 }
@@ -85,4 +86,10 @@
   font-weight: bold;
   text-decoration: underline;
   margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 772px) {
+  .modalWrapper figure img {
+    height: 100%;
+  }
 }
