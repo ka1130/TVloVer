@@ -2,6 +2,7 @@
 
 .showInfo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   max-width: 80%;
   margin: 2rem auto;
@@ -50,5 +51,11 @@
   color: $pewter-darker;
   border: 0;
   background: transparent;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
+}
+
+@media screen and (min-width: 772px) {
+  .showInfo {
+    flex-direction: row;
+  }
 }
