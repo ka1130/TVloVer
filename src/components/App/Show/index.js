@@ -28,7 +28,7 @@ class Show extends Component {
           <img src={image.original} alt={name} className={styles.showImage}/>
             <figcaption className={styles.description}>
               <h3>{name}</h3>
-              <p className={styles.summary}>{strip(summary)}</p>
+              <p className={styles.summary}>{summary ? strip(summary) : ''}</p>
               
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>

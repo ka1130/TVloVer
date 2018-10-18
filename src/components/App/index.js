@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { today } from 'constants/apiQueries';
+import { countries } from 'constants/countries';
 import { fetchEpisodes } from 'redux/actions/episodesActions';
 
 import { getCurrentEpisodes } from 'helpers/pagination'
@@ -10,6 +11,7 @@ import { getCurrentEpisodes } from 'helpers/pagination'
 import ActiveEpisodeModal from 'components/App/ActiveEpisodeModal';
 import EpisodesList from 'components/App/EpisodesList';
 import Pagination from 'components/App/Pagination';
+import Select from 'components/App/Select';
 import Spinner from 'components/App/Spinner';
 
 import styles from './App.module.scss';
@@ -21,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEpisodes();
+    this.props.fetchEpisodes('us');
   }
 
   openModal = (episode) => {
@@ -34,6 +36,10 @@ class App extends Component {
   closeModal = event => {
     const { id } = event.target;
     if (id === "modalBg" || id === "closeModal") this.setState({ isModalVisible: false })
+  }
+
+  selectCountry = country => {
+    this.props.fetchEpisodes(country);
   }
 
   render() {
@@ -51,6 +57,7 @@ class App extends Component {
       <div className={styles.appWrapper}>
         <h6 className={styles.showsHeading}>What’s on telly on <span className={styles.date}>{today}</span></h6>
         <Pagination episodesPerPage={episodesPerPage} currentPage={currentPage} history={this.props.history}/>
+        <Select options={countries} onChange={this.selectCountry}/>
         {
           loading
           ? <Spinner />

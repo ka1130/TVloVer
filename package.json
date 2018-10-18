@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "http://ka1130.github.io/TVloVer",
   "dependencies": {
-    "ajv": "^6.5.4",
     "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
     "node-sass": "^4.9.3",
