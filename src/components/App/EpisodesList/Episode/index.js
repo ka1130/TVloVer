@@ -6,6 +6,7 @@ import styles from './Episode.module.scss';
 class Episode extends Component {
   state = {
     name: '',
+    showTitle: '',
     imgUrl: '',
   };
 
@@ -18,18 +19,20 @@ class Episode extends Component {
 
     return {
       name: nextProps.name,
+      showTitle: nextProps.showTitle,
       imgUrl: saveImgUrl,
     }
   }
 
   render() {
-    const { name, imgUrl } = this.state;
+    const { name, showTitle, imgUrl } = this.state;
     return (
       <li className={styles.showListElement} onClick={this.props.openModal}>
         <figure>
           <img src={imgUrl} alt={name} />
           <figcaption>
-            <h5 className={styles.showTitle}>{name}</h5>
+            <p className={styles.showTitle}>Show: <strong>{showTitle}</strong></p>
+            <p className={styles.episodeTitle}>Episode: <strong>{name}</strong></p>
           </figcaption>
         </figure>
      </li>
