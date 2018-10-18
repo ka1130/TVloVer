@@ -37,8 +37,9 @@ class ActiveEpisodeModal extends Component {
             <figcaption>
               <h5 className={styles.showTitle}>{activeEpisode.name}</h5>
               <p className={styles.emissionTime}>
-                <span className={styles.date}>{format(activeEpisode.airdate,'MMMM Do, YYYY')}</span>
-                <span className={styles.time}>{activeEpisode.airtime}</span>
+                <span>Channel: <strong>{activeEpisode.show.network.name}</strong></span>
+                <span>{format(activeEpisode.airdate,'MMMM Do, YYYY')}</span>
+                <span>{activeEpisode.airtime}</span>
               </p>
               <p className={styles.summary}>{summary}</p>
               <Link to={`/shows/${id}`} className={styles.link}>Go to the show’s page</Link>
