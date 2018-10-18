@@ -19,4 +19,8 @@ export const countries = [
     name: 'The Netherlands',
     code: 'NL'
   },
+  {
+    name: 'Poland',
+    code: 'PL'
+  },
 ];
