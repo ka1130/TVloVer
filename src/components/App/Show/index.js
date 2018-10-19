@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
-import { addToWatchList } from 'redux/actions/watchListActions';
+import { addToFavShows } from 'redux/actions/favShowsActions';
 import { strip } from 'helpers/htmlStrip';
 
 import styles from './Show.module.scss';
@@ -15,7 +15,8 @@ class Show extends Component {
   }
 
   render() {
-    const { name, image, summary, runtime, status, type, schedule, network } = this.props.show;
+    const { show } = this.props;
+    const { name, image, summary, runtime, status, type, schedule, network } = show;
     const { time } = schedule || '';
     const days  = schedule ? schedule.days.join(', ') : '';
 
@@ -30,8 +31,8 @@ class Show extends Component {
             <figcaption className={styles.description}>
               <h3>{name}</h3>
               <p className={styles.summary}>{summary ? strip(summary) : ''}</p>
-              <button className={styles.toWatchList} onClick={this.props.addToWatchList}>
-                Add to watchlist
+              <button className={styles.toFavorites} onClick={() => this.props.addToFavShows(show)}>
+                Add to favorites
               </button>
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
@@ -47,7 +48,7 @@ class Show extends Component {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ fetchShow, addToWatchList }, dispatch)
+  bindActionCreators({ fetchShow, addToFavShows }, dispatch)
 );
 
 const mapStateToProps = (state) => ({
