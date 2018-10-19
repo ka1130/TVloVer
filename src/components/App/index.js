@@ -40,7 +40,7 @@ class App extends Component {
 
   selectCountry = country => {
     this.props.fetchEpisodes(country);
-    this.props.history.push('1');
+    if (this.props.match.params.page !== '1') this.props.history.push('1');
   }
 
   render() {
