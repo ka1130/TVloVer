@@ -5,9 +5,10 @@ import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import store from 'redux/store'
 
-import App from './components/App';
-import Header from './components/App/Header';
-import Show from './components/App/Show';
+import App from 'components/App';
+import FavoriteShows from 'components/App/FavoriteShows';
+import Header from 'components/App/Header';
+import Show from 'components/App/Show';
 
 import './index.css';
 
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route path="/page/:page" component={App} />
           <Redirect exact path='/' to='/page/1'/>
         </Switch>
+        <FavoriteShows />
       </>
     </HashRouter>
   </Provider>,
