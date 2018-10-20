@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'node-uuid';
 
 import imgMissing from 'images/img_missing.png';
 import Episode from 'components/App/EpisodesList/Episode';
@@ -12,7 +13,7 @@ const renderEpisodesList = (episodes, func) => {
       <ul className={styles.showsList}>
         {episodes.map(
           (element) => <Episode
-                          key={element.id}
+                          key={v4()}
                           name={element.name}
                           showTitle={element.show.name}
                           summary={element.summary}
