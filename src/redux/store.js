@@ -3,7 +3,9 @@ import thunk from 'redux-thunk';
 import rootReducer from 'redux/reducers';
 import { logger } from 'redux-logger';
 
-const persistedState = localStorage.getItem('favs') ? JSON.parse(localStorage.getItem('favs')) : {};
+import { loadState, saveState } from 'redux/localStorage';
+
+const persistedState = loadState();
 
 const store = createStore(
   rootReducer,
@@ -12,7 +14,9 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  localStorage.setItem('favs', JSON.stringify(store.getState()));
+  saveState({
+    favs: store.getState()
+  });
 })
 
 export default store;
