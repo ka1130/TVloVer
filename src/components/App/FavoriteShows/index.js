@@ -5,7 +5,8 @@ import styles from './FavoriteShows.module.scss';
 
 class FavoriteShows extends Component {
   render() {
-    if (!this.props.favShows.length) {
+    console.log(this.props.favShows.favShows.length);
+    if (!this.props.favShows.favShows.length) {
       return <p>Your watchlist is empty</p>;
     }
 
@@ -13,7 +14,7 @@ class FavoriteShows extends Component {
       <aside className={styles.favWrapper}>
         <h4>Your favorite shows</h4>
         <ul>
-          {this.props.favShows.map(show => <li key={show.id}>{show.name}</li>)}
+          {this.props.favShows.favShows.map((show, i) => <li key={`${show.id}_${i}`}>{show.name}</li>)}
         </ul>
       </aside>
     ) 
