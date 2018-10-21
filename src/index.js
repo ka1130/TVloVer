@@ -20,9 +20,9 @@ ReactDOM.render(
         <Switch>
           <Route path="/shows/:id" component={Show} />
           <Route path="/page/:page" component={App} />
+          <Route path="/watchlist" component={Watchlist} />
           <Redirect exact path='/' to='/page/1'/>
         </Switch>
-        <Watchlist />
       </>
     </HashRouter>
   </Provider>,
