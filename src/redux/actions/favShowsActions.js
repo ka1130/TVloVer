@@ -1,4 +1,8 @@
-import  { ADD_TO_FAVSHOWS, REMOVE_FROM_FAVSHOWS } from 'redux/actions/types';
+import {
+  ADD_TO_FAVSHOWS,
+  REMOVE_FROM_FAVSHOWS,
+  CLEAR_FAVSHOWS
+} from 'redux/actions/types';
 
 export const addToFavShows = show => {
   return {
@@ -10,4 +14,9 @@ export const addToFavShows = show => {
 export const removeFromFavShows = show => ({
   type: REMOVE_FROM_FAVSHOWS,
   payload: show
+});
+
+export const clearFavShows = showList => ({
+  type: CLEAR_FAVSHOWS,
+  payload: showList
 });

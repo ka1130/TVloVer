@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { v4 } from 'node-uuid';
-import { removeFromFavShows } from 'redux/actions/favShowsActions';
+import { removeFromFavShows, clearFavShows } from 'redux/actions/favShowsActions';
 
 import styles from './FavoriteShows.module.scss';
 
@@ -24,7 +24,7 @@ class FavoriteShows extends Component {
             </li>
           ))}
         </ul>
-        <button>Clear watchlist</button>
+        <button onClick={() => this.props.clearFavShows()}>Clear watchlist</button>
       </aside>
     );
   }
@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ removeFromFavShows}, dispatch)
+  return bindActionCreators({ removeFromFavShows, clearFavShows }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteShows);
