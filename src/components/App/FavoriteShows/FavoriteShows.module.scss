@@ -5,4 +5,10 @@
   border-top: 1px solid $pewter-blue;
   height: 15rem;
   padding: 2rem;
+  li {
+    margin: 2rem 0;
+    button {
+      margin-left: 1rem;
+    }
+  }
 }

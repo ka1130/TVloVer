@@ -1,4 +1,4 @@
-import  { ADD_TO_FAVSHOWS } from 'redux/actions/types';
+import  { ADD_TO_FAVSHOWS, REMOVE_FROM_FAVSHOWS } from 'redux/actions/types';
 
 const initialState = {
   favShows: []
@@ -9,6 +9,12 @@ export default function favShows(state = initialState, action) {
     case ADD_TO_FAVSHOWS:
       return {
         favShows: [...state.favShows, action.payload]
+      };
+    case REMOVE_FROM_FAVSHOWS:
+      console.log(action.payload);
+      console.log(state.favShows);
+      return {
+        favShows: [...state.favShows].filter(element => element.id !== action.payload.id)
       };
     default:
       return state;

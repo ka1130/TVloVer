@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from 'redux/reducers';
 import { logger } from 'redux-logger';
-import _ from 'lodash';
+import throttle from 'lodash/throttle';
 
 import { loadState, saveState } from 'redux/localStorage';
 
@@ -14,10 +14,10 @@ const store = createStore(
   applyMiddleware(thunk, logger)
 );
 
-store.subscribe(_.throttle(() => {
+store.subscribe(throttle(() => {
   saveState({
     favs: store.getState()
   });
-}));
+}, 1000));
 
 export default store;
