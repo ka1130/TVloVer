@@ -11,9 +11,10 @@ const initialState = {
 export default function watchlist(state = initialState, action) {
   switch(action.type) {
     case ADD_TO_WATCHLIST:
-      console.log(action.payload);
-      console.log(state);
-      // return [...state, action.payload];
+      if (state.watchlist.find(show => show.id === action.payload.id)) {
+        // prevent adding the same show twice
+        return state;
+      }
       return {
         watchlist: [...state.watchlist, action.payload]
       };
