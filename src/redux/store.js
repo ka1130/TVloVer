@@ -16,7 +16,7 @@ const store = createStore(
 
 store.subscribe(throttle(() => {
   saveState({
-    favShows: store.getState().favShows
+    watchlist: store.getState().watchlist
   });
 }, 1000));
 

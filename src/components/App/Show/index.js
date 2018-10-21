@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
-import { addToFavShows } from 'redux/actions/favShowsActions';
+import { addToWatchlist } from 'redux/actions/watchlistActions';
 import { strip } from 'helpers/htmlStrip';
 
 import styles from './Show.module.scss';
@@ -31,8 +31,8 @@ class Show extends Component {
             <figcaption className={styles.description}>
               <h3>{name}</h3>
               <p className={styles.summary}>{summary ? strip(summary) : ''}</p>
-              <button className={styles.toFavorites} onClick={() => this.props.addToFavShows(show)}>
-                Add to favorites
+              <button className={styles.addToWatchlist} onClick={() => this.props.addToWatchlist(show)}>
+                Add to watchlist
               </button>
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
@@ -48,7 +48,7 @@ class Show extends Component {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ fetchShow, addToFavShows }, dispatch)
+  bindActionCreators({ fetchShow, addToWatchlist }, dispatch)
 );
 
 const mapStateToProps = (state) => ({

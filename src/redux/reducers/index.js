@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import data from 'redux/reducers/episodesReducer';
 import show from 'redux/reducers/showsReducer';
-import favShows from 'redux/reducers/favShowsReducer';
+import watchlist from 'redux/reducers/watchlistReducer';
 
 const rootReducer = combineReducers({
   data,
   show,
-  favShows
+  watchlist
 });
 
 export default rootReducer;

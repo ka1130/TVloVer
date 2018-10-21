@@ -6,7 +6,7 @@ import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 import store from 'redux/store'
 
 import App from 'components/App';
-import FavoriteShows from 'components/App/FavoriteShows';
+import Watchlist from 'components/App/Watchlist';
 import Header from 'components/App/Header';
 import Show from 'components/App/Show';
 
@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route path="/page/:page" component={App} />
           <Redirect exact path='/' to='/page/1'/>
         </Switch>
-        <FavoriteShows />
+        <Watchlist />
       </>
     </HashRouter>
   </Provider>,
