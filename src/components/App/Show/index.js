@@ -3,12 +3,16 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
-import { addToWatchlist } from 'redux/actions/watchlistActions';
+import { addToWatchlist, removeFromWatchlist } from 'redux/actions/watchlistActions';
 import { strip } from 'helpers/htmlStrip';
 
 import styles from './Show.module.scss';
 
 class Show extends Component {
+  state = {
+    addedToWatchlist: false
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchShow(id);
@@ -19,6 +23,8 @@ class Show extends Component {
     const { name, image, summary, runtime, status, type, schedule, network } = show;
     const { time } = schedule || '';
     const days  = schedule ? schedule.days.join(', ') : '';
+    const { watchlist } = this.props.watchlist;
+    const addedToWatchlist = watchlist.find(element => element.id === show.id);
 
     if (!image) {
       return <p>Loading...</p>;
@@ -31,9 +37,21 @@ class Show extends Component {
             <figcaption className={styles.description}>
               <h3>{name}</h3>
               <p className={styles.summary}>{summary ? strip(summary) : ''}</p>
-              <button className={styles.addToWatchlist} onClick={() => this.props.addToWatchlist(show)}>
-                Add to watchlist
-              </button>
+              { addedToWatchlist ?               
+                  <button
+                    className={styles.removeFromWatchlist}
+                    onClick={() => this.props.removeFromWatchlist(show)}
+                  >
+                    Remove from watchlist
+                  </button>
+                  :
+                  <button
+                    className={styles.addToWatchlist}
+                    onClick={() => this.props.addToWatchlist(show)}
+                  >
+                    Add to watchlist
+                  </button>
+              }
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>
@@ -48,11 +66,12 @@ class Show extends Component {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ fetchShow, addToWatchlist }, dispatch)
+  bindActionCreators({ fetchShow, addToWatchlist, removeFromWatchlist }, dispatch)
 );
 
 const mapStateToProps = (state) => ({
   show: state.show.show,
+  watchlist: state.watchlist,
   loading: state.show.loading,
   error: state.show.error
 });

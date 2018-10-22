@@ -62,8 +62,7 @@
   }
 }
 
-.addToWatchlist {
-  background-color: $sunflower;
+.addToWatchlist, .removeFromWatchlist {
   color: $white-smoke;
   text-transform: uppercase;
   font-weight: bold;
@@ -71,10 +70,21 @@
   padding: 0.5rem;
   width: 12rem;
   cursor: pointer;
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+.addToWatchlist {
+  background-color: $sunflower;
   &:hover {
     background-color: $sunflower-darker;
   }
-  &:active, &:focus {
-    outline: none;
+}
+
+.removeFromWatchlist {
+  background-color: $mouse;
+  &:hover {
+    background-color: $mouse-darker;
   }
 }

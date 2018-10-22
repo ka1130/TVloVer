@@ -11,3 +11,31 @@
     }
   }
 }
+
+.removeFromWatchlist, .clearWatchlist {
+  color: $white-smoke;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 0;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+.removeFromWatchlist {
+  background-color: $mouse;
+  font-size: 0.6rem;
+  &:hover {
+    background-color: $mouse-darker;
+  }
+}
+
+.clearWatchlist {
+  background-color: $worn-jeans;
+  font-size: 0.8rem;
+  &:hover {
+    background-color: $worn-jeans-darker;
+  }
+}

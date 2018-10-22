@@ -14,16 +14,26 @@ class Watchlist extends Component {
 
     return (
       <aside className={styles.favWrapper}>
-        <h4>Your favorite shows</h4>
+        <h4>Your watchlist</h4>
         <ul>
           {this.props.watchlist.watchlist.map(show => (
             <li key={v4()}>
               <span>{show.name}</span>
-              <button onClick={() => this.props.removeFromWatchlist(show)}>Remove from watchlist</button>
+              <button
+                className={styles.removeFromWatchlist}
+                onClick={() => this.props.removeFromWatchlist(show)}
+              >
+                Remove
+              </button>
             </li>
           ))}
         </ul>
-        <button onClick={() => this.props.clearWatchlist()}>Clear watchlist</button>
+        <button
+          className={styles.clearWatchlist}
+          onClick={() => this.props.clearWatchlist()}
+        >
+          Clear watchlist
+        </button>
       </aside>
     );
   }
