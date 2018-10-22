@@ -10,10 +10,6 @@ import { strip } from 'helpers/htmlStrip';
 import styles from './Show.module.scss';
 
 class Show extends Component {
-  state = {
-    addedToWatchlist: false
-  }
-
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchShow(id);
@@ -53,9 +49,6 @@ class Show extends Component {
                     Add to watchlist
                   </button>
               }
-
-              <button onClick={() => this.props.addToWatchlist(show)}>add to watchlist</button>
-
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>

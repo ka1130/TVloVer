@@ -4,30 +4,23 @@ import  {
   CLEAR_WATCHLIST
 } from 'redux/actions/types';
 
-// const initialState = {
-//   watchlist: []
-// }
+const initialState = {
+  watchlist: [],
+  removedShows: []
+};
 
-export default function watchlist(state = [], action) {
+export default function watchlist(state = initialState, action) {
   switch(action.type) {
     case ADD_TO_WATCHLIST:
-      // if (state.watchlist.find(show => show.id === action.payload.id)) {
-      //   // prevent adding the same show twice
-      //   return state;
-      // }
-      console.log(action.payload);
-      // return {
-      //   watchlist: [...state.watchlist, action.payload]
-      // };
-      
       return {
+        ...state,
         watchlist: [...state.watchlist, action.payload]
       };
     case REMOVE_FROM_WATCHLIST:
       return {
-        watchlist: [...state.watchlist].filter(element => element.id !== action.payload.id)
+        ...state,
+        removedShows: [...state.removedShows, action.payload]
       };
-      // return action.payload;
     case CLEAR_WATCHLIST:
       return {
         watchlist: []

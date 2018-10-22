@@ -17,7 +17,6 @@ class Watchlist extends Component {
     return (
       <article className={styles.watchlistWrapper}>
         <h4>Your watchlist</h4>
-        
         <ul className={styles.watchlist}>
           {this.props.watchlist.map(show => (
             <li key={v4()}>
