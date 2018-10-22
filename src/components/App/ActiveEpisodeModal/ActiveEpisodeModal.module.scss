@@ -36,7 +36,7 @@
 }
 
 .emissionTime {
-  color: $pewter-blue;
+  color: $worn-jeans;
   font-weight: bold;
   padding: 0 0 2rem 0;
   font-size: 0.9rem;
@@ -50,7 +50,7 @@
 .summary {
   margin-bottom: 3rem;
   font-style: oblique;
-  color: $pewter-darker
+  color: $mouse-darker;
 }
 
 .modalWrapper.visible {
@@ -76,7 +76,7 @@
   cursor: pointer;
   background-color: transparent;
   &:hover, &:focus, &:active {
-    color: #555;
+    color: $mouse-darker;
     text-decoration: none;
     border: 0;
     outline: 0;
@@ -85,10 +85,13 @@
 
 .link {
   display: block;
-  color: $burgundy;
+  color: $raspberry;
   font-weight: bold;
   text-decoration: underline;
   margin-bottom: 1rem;
+  &:hover {
+    color: $raspberry-darker;
+  }
 }
 
 @media screen and (min-width: $tablet-width) {

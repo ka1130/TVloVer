@@ -7,13 +7,13 @@
   li {
     margin: 0 1rem;
     font-weight: bold;
-    color: $pewter-blue;
+    color: $worn-jeans;
     cursor: pointer;
     &:hover {
-      color: $pewter-darker;
+      color: $worn-jeans;
     }
     &.active {
-      background-color: $pewter-blue;
+      background-color: $worn-jeans;
       padding: 0.5rem;
       border-radius: 0.25rem;
       color: $white-smoke;
