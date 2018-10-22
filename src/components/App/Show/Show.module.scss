@@ -52,7 +52,7 @@
   color: $raspberry;
   border: 0;
   background: transparent;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   cursor: pointer;
   &:hover {
     color: $raspberry-darker;
@@ -86,5 +86,11 @@
   background-color: $mouse;
   &:hover {
     background-color: $mouse-darker;
+  }
+}
+
+@media screen and (min-width: 772px) {
+  .showInfo {
+    flex-direction: row;
   }
 }

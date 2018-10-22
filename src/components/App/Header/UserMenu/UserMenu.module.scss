@@ -4,15 +4,15 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 12rem;
+  width: 7rem;
   text-align: right;
   li {
     color: #fff;
     background: $sunflower;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem;
     position: relative;
     transition-duration: 0.5s;
-    &:hover {
+    &:hover, &:active {
       background: $mouse-darker;
       cursor: pointer;
     }
@@ -23,27 +23,45 @@
 }
 
 .dropdown {
-	background: $mouse-darker;
+  background: $mouse-darker;
   opacity: 0;
-	position: absolute;
+  position: absolute;
   transition: all 0.5s ease;
-  margin-top: 1rem;
-	left: 0;
+  margin-top: 0.75rem;
+  left: 0;
   display: none;
   width: 100%;
 }
 
 .userMenuWrapper li:hover > .dropdown,
-.userMenuWrapper li .dropdown:hover {
+.userMenuWrapper li .dropdown:hover
+.userMenuWrapper li .dropdown:active {
   opacity: 1;
   display: block;
 }
 
-.myAccount > a {
+.myAccount {
+  display: block;
   background: url('images/user.svg') no-repeat;
   background-size: 2.5rem;
-  background-position: 0 50%;
+  background-position: 100% 50%;
   height: 2.5rem;
-  display: block;
   line-height: 2.5rem;
+  cursor: pointer;
+  & > span {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 772px) {
+  .userMenuWrapper {
+    width: 10.5rem;
+  }
+
+  .myAccount {
+    background-position: 0 50%;
+    & > span {
+      display: block;
+    }
+  }
 }
