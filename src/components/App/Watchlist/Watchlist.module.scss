@@ -1,14 +1,56 @@
 @import 'styles/base/_palette.scss';
 
-.favWrapper {
-  width: 100%;
-  height: 15rem;
+.watchlistEmpty {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.watchlistWrapper {
   padding: 2rem;
+  h4 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: $worn-jeans;
+    text-transform: uppercase;
+  }
+}
+
+.watchlist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   li {
-    margin: 2rem 0;
-    button {
-      margin-left: 1rem;
-    }
+    margin: 0.75rem 1.5rem;
+    max-width: 8rem;
+  }
+}
+
+.watchlistItem, .watchlistCaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.watchlistItem {
+  img {
+    width: 8rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+.title {
+  font-size: 0.85rem;
+  display: block;
+  height: 3.5rem;
+  line-height: 1.2rem;
+  text-align: center;
+  color: $worn-jeans;
+  text-decoration: underline;
+  &:hover {
+    color: $worn-jeans-darker;
   }
 }
 
@@ -17,7 +59,7 @@
   text-transform: uppercase;
   font-weight: bold;
   border: 0;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
   &:active, &:focus {
     outline: none;
@@ -26,16 +68,18 @@
 
 .removeFromWatchlist {
   background-color: $mouse;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   &:hover {
     background-color: $mouse-darker;
   }
 }
 
 .clearWatchlist {
-  background-color: $worn-jeans;
-  font-size: 0.8rem;
+  background-color: $raspberry;
+  font-size: 0.9rem;
+  margin: 2rem auto;
+  display: block;
   &:hover {
-    background-color: $worn-jeans-darker;
+    background-color: $raspberry-darker;
   }
 }
