@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
 import { addToWatchlist, removeFromWatchlist } from 'redux/actions/watchlistActions';
+import getWatchlistedShows from 'redux/selectors/watchlistSelector';
 import { strip } from 'helpers/htmlStrip';
 
 import styles from './Show.module.scss';
@@ -23,7 +24,7 @@ class Show extends Component {
     const { name, image, summary, runtime, status, type, schedule, network } = show;
     const { time } = schedule || '';
     const days  = schedule ? schedule.days.join(', ') : '';
-    const { watchlist } = this.props.watchlist;
+    const { watchlist } = this.props;
     const addedToWatchlist = watchlist.find(element => element.id === show.id);
 
     if (!image) {
@@ -52,6 +53,9 @@ class Show extends Component {
                     Add to watchlist
                   </button>
               }
+
+              <button onClick={() => this.props.addToWatchlist(show)}>add to watchlist</button>
+
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
               <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>
@@ -71,7 +75,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = (state) => ({
   show: state.show.show,
-  watchlist: state.watchlist,
+  watchlist: getWatchlistedShows(state.watchlist),
   loading: state.show.loading,
   error: state.show.error
 });
