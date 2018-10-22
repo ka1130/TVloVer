@@ -89,7 +89,7 @@
   }
 }
 
-@media screen and (min-width: 772px) {
+@media screen and (min-width: $tablet-width) {
   .showInfo {
     flex-direction: row;
   }

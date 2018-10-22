@@ -1,4 +1,5 @@
 @import 'styles/base/_palette.scss';
+@import 'styles/base/_mediaQueries.scss';
 
 .userMenuWrapper {
   position: absolute;
@@ -53,7 +54,7 @@
   }
 }
 
-@media screen and (min-width: 772px) {
+@media screen and (min-width: $tablet-width) {
   .userMenuWrapper {
     width: 10.5rem;
   }

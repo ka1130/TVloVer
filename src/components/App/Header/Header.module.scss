@@ -1,4 +1,5 @@
 @import 'styles/base/_palette.scss';
+@import 'styles/base/_mediaQueries.scss';
 
 .appHeader {
   background-color: $sunflower;
@@ -31,7 +32,7 @@
   margin-left: 1rem;
 }
 
-@media screen and (min-width: 772px) {
+@media screen and (min-width: $tablet-width) {
   .appHeader {
     height: 6rem;
     background-size: 3rem;
