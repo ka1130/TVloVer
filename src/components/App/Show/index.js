@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchShow } from 'redux/actions/showsActions';
 import { addToWatchlist, removeFromWatchlist } from 'redux/actions/watchlistActions';
-import getWatchlistedShows from 'redux/selectors/watchlistSelector';
 import { strip } from 'helpers/htmlStrip';
 
 import styles from './Show.module.scss';
 
 class Show extends Component {
+  state = {
+    addedToWatchlist: false
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchShow(id);
@@ -17,10 +20,10 @@ class Show extends Component {
 
   render() {
     const { show } = this.props;
-    const { name, image, summary, runtime, status, type, schedule, network } = show;
+    const { name, image, summary, runtime, status, type, schedule } = show;
     const { time } = schedule || '';
     const days  = schedule ? schedule.days.join(', ') : '';
-    const { watchlist } = this.props;
+    const { watchlist } = this.props.watchlist;
     const addedToWatchlist = watchlist.find(element => element.id === show.id);
 
     if (!image) {
@@ -50,7 +53,6 @@ class Show extends Component {
                   </button>
               }
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
-              <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>
               <p className={styles.details}><strong>STATUS: </strong>{status}</p>
               <p className={styles.details}><strong>TYPE: </strong>{type}</p>
@@ -68,7 +70,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = (state) => ({
   show: state.show.show,
-  watchlist: getWatchlistedShows(state.watchlist),
+  watchlist: state.watchlist,
   loading: state.show.loading,
   error: state.show.error
 });

@@ -5,21 +5,22 @@ import  {
 } from 'redux/actions/types';
 
 const initialState = {
-  watchlist: [],
-  removedShows: []
-};
+  watchlist: []
+}
 
 export default function watchlist(state = initialState, action) {
   switch(action.type) {
     case ADD_TO_WATCHLIST:
+      if (state.watchlist.find(show => show.id === action.payload.id)) {
+        // prevent adding the same show twice
+        return state;
+      }
       return {
-        ...state,
         watchlist: [...state.watchlist, action.payload]
       };
     case REMOVE_FROM_WATCHLIST:
       return {
-        ...state,
-        removedShows: [...state.removedShows, action.payload]
+        watchlist: [...state.watchlist].filter(element => element.id !== action.payload.id)
       };
     case CLEAR_WATCHLIST:
       return {
@@ -29,3 +30,4 @@ export default function watchlist(state = initialState, action) {
       return state;
   }
 }
+
