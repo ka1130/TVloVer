@@ -11,6 +11,10 @@ class Pagination extends Component {
     let i = 1;
     while(i <= Math.ceil(episodes.length / episodesPerPage)) pageNumbers.push(i++);
 
+    if (pageNumbers.length < 2) {
+      return null;
+    }
+
     return pageNumbers.map(
       number => <li key={number}
                     id={number}

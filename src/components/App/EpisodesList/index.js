@@ -14,6 +14,7 @@ const renderEpisodesList = (episodes, func) => {
           (element) => <Episode
                           key={element.id}
                           name={element.name}
+                          showTitle={element.show.name}
                           summary={element.summary}
                           openModal={() => func(element)}
                           imgUrl={element.show.image ? element.show.image.medium : imgMissing}/>
@@ -43,6 +44,7 @@ EpisodesList.propTypes = {
       image: PropTypes.shape({
         medium: PropTypes.string,
       }),
+      title: PropTypes.string,
     }),
   })).isRequired,
   openModal: PropTypes.func.isRequired,
