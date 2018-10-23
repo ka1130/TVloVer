@@ -14,7 +14,7 @@ class Show extends Component {
   }
 
   render() {
-    const { name, image, summary, runtime, status, type, schedule } = this.props.show;
+    const { name, image, summary, runtime, status, type, schedule, network } = this.props.show;
     const { time } = schedule || '';
     const days  = schedule ? schedule.days.join(', ') : '';
 
@@ -31,6 +31,7 @@ class Show extends Component {
               <p className={styles.summary}>{summary ? strip(summary) : ''}</p>
               
               <p className={styles.time}><strong>WATCH IT AT: </strong>{time} on {days}</p>
+              <p className={styles.details}><strong>CHANNEL: </strong>{network.name}</p>
               <p className={styles.details}><strong>RUNTIME: </strong>{runtime} min.</p>
               <p className={styles.details}><strong>STATUS: </strong>{status}</p>
               <p className={styles.details}><strong>TYPE: </strong>{type}</p>

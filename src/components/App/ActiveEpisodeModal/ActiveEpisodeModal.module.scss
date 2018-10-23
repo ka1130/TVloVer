@@ -1,10 +1,11 @@
 @import 'styles/base/_palette.scss';
+@import 'styles/base/_mediaQueries.scss';
 
 .modalWrapper {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 8rem;
+  padding-top: 4rem;
   left: 0;
   top: 0;
   width: 100%;
@@ -22,7 +23,8 @@
       margin-bottom: 2rem;
       border-radius: 0.5rem;
       border: 0.25rem solid #fff;
-      box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.2);
+      box-shadow: 0.0625rem 0.0625rem 0.25rem 0 rgba(0,0,0,0.2);
+      height: 12rem;
     }
     h5 {
       margin-bottom: 1rem;
@@ -39,7 +41,9 @@
   padding: 0 0 2rem 0;
   font-size: 0.9rem;
   span {
+    font-weight: normal;
     margin: 0.25rem;
+    display: block;
   }
 }
 
@@ -57,7 +61,7 @@
   background-color: #fefefe;
   margin: 0 auto;
   padding: 1rem;
-  width: 80%;
+  width: 90%;
   max-width: 25rem;
   position: relative;
 }
@@ -85,4 +89,10 @@
   font-weight: bold;
   text-decoration: underline;
   margin-bottom: 1rem;
+}
+
+@media screen and (min-width: $tablet-width) {
+  .modalWrapper figure img {
+    height: 100%;
+  }
 }

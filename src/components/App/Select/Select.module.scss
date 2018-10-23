@@ -1,11 +1,13 @@
+@import 'styles/base/_palette.scss';
+
 .selectWrapper {
   margin: 2rem auto;
   padding: 0;
-  border: 1px solid #ccc;
+  border: none;
   width: 10rem;
-  border-radius: 3px;
+  height: 2rem;
   overflow: hidden;
-  background-color: #fff;
+  background-color: $pewter-darker;
   background-image: url('images/down-arrow.svg');
   background-repeat: no-repeat;
   background-size: 1.25rem;
@@ -13,13 +15,17 @@
 }
 
 .select {
-  padding: 5px 8px;
-  width: 130%;
+  padding: 0.25rem 0.5rem;
   border: none;
   box-shadow: none;
   background-color: transparent;
+  color: $white-smoke;
+  font-size: 0.9rem;
   background-image: none;
   appearance: none;
+  display: block;
+  line-height: 1.5rem;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
