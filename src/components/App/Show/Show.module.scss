@@ -9,7 +9,7 @@
   margin: 2rem auto;
   h3 {
     font-size: 1.5rem;
-    color: $burgundy;
+    color: $worn-jeans;
     margin-bottom: 2rem;
   }
 }
@@ -35,7 +35,7 @@
 
 .details {
   margin: 0.5rem 0;
-  color: $wine-dregs;
+  color: $mouse-darker;
 }
 
 .time {
@@ -49,10 +49,44 @@
   font-weight: bold;
   font-size: 0.9rem;
   text-decoration: underline;
-  color: $pewter-darker;
+  color: $raspberry;
   border: 0;
   background: transparent;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem;
+  cursor: pointer;
+  &:hover {
+    color: $raspberry-darker;
+  }
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+.addToWatchlist, .removeFromWatchlist {
+  color: $white-smoke;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 0;
+  padding: 0.5rem;
+  width: 12rem;
+  cursor: pointer;
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+.addToWatchlist {
+  background-color: $sunflower;
+  &:hover {
+    background-color: $sunflower-darker;
+  }
+}
+
+.removeFromWatchlist {
+  background-color: $mouse;
+  &:hover {
+    background-color: $mouse-darker;
+  }
 }
 
 @media screen and (min-width: $tablet-width) {
