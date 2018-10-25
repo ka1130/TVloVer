@@ -8,7 +8,9 @@ import { loadState, saveState } from 'redux/localStorage';
 
 const persistedState = loadState();
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = process.env.NODE_ENV !== 'production' ? 
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose :
+  compose;
 
 const enhancer = composeEnhancers(
   applyMiddleware(thunk, logger),
