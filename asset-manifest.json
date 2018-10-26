@@ -1,15 +1,15 @@
 {
   "main.css": "/TVloVer/static/css/main.64e8f358.chunk.css",
-  "main.js": "/TVloVer/static/js/main.bac06797.chunk.js",
-  "main.js.map": "/TVloVer/static/js/main.bac06797.chunk.js.map",
-  "static/js/1.09283dc6.chunk.js": "/TVloVer/static/js/1.09283dc6.chunk.js",
-  "static/js/1.09283dc6.chunk.js.map": "/TVloVer/static/js/1.09283dc6.chunk.js.map",
+  "main.js": "/TVloVer/static/js/main.26dac5d8.chunk.js",
+  "main.js.map": "/TVloVer/static/js/main.26dac5d8.chunk.js.map",
+  "static/js/1.f729c589.chunk.js": "/TVloVer/static/js/1.f729c589.chunk.js",
+  "static/js/1.f729c589.chunk.js.map": "/TVloVer/static/js/1.f729c589.chunk.js.map",
   "runtime~main.js": "/TVloVer/static/js/runtime~main.3c091173.js",
   "runtime~main.js.map": "/TVloVer/static/js/runtime~main.3c091173.js.map",
   "static/css/main.64e8f358.chunk.css.map": "/TVloVer/static/css/main.64e8f358.chunk.css.map",
   "static/media/UserMenu.module.scss": "/TVloVer/static/media/user.7a21cbe9.svg",
   "static/media/Select.module.scss": "/TVloVer/static/media/down-arrow.f880a5e0.svg",
   "index.html": "/TVloVer/index.html",
-  "precache-manifest.ae932ef0077c2d870778b0b46333a928.js": "/TVloVer/precache-manifest.ae932ef0077c2d870778b0b46333a928.js",
+  "precache-manifest.5ac1bd2300cae1c2a362c1598db79639.js": "/TVloVer/precache-manifest.5ac1bd2300cae1c2a362c1598db79639.js",
   "service-worker.js": "/TVloVer/service-worker.js"
 }

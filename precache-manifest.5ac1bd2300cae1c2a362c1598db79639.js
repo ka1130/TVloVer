@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/TVloVer/static/js/runtime~main.3c091173.js"
   },
   {
-    "revision": "bac06797bb48b05be7ba",
-    "url": "/TVloVer/static/js/main.bac06797.chunk.js"
+    "revision": "26dac5d8901819ee9cfa",
+    "url": "/TVloVer/static/js/main.26dac5d8.chunk.js"
   },
   {
-    "revision": "09283dc67de143ac6998",
-    "url": "/TVloVer/static/js/1.09283dc6.chunk.js"
+    "revision": "f729c589731c993c0aae",
+    "url": "/TVloVer/static/js/1.f729c589.chunk.js"
   },
   {
-    "revision": "bac06797bb48b05be7ba",
+    "revision": "26dac5d8901819ee9cfa",
     "url": "/TVloVer/static/css/main.64e8f358.chunk.css"
   },
   {
-    "revision": "6dc50a0a3a1b5169bdb1e2e3efe5c274",
+    "revision": "71d4aff8a322695401a62e609dd8c3ef",
     "url": "/TVloVer/index.html"
   }
 ];
