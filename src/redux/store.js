@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from 'redux/reducers';
 import { logger } from 'redux-logger';
@@ -8,11 +8,15 @@ import { loadState, saveState } from 'redux/localStorage';
 
 const persistedState = loadState();
 
-const store = createStore(
-  rootReducer,
-  persistedState,
-  applyMiddleware(thunk, logger)
+const composeEnhancers = process.env.NODE_ENV !== 'production' ? 
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose :
+  compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk, logger),
 );
+
+const store = createStore(rootReducer, persistedState, enhancer);
 
 store.subscribe(throttle(() => {
   saveState({
