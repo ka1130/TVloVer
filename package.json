@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://ka1130.github.io/TVloVer",
   "dependencies": {
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
     "enzyme": "^3.7.0",
@@ -21,7 +22,8 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "yarn": "^1.10.1"
   },
   "scripts": {
     "start": "react-scripts start",

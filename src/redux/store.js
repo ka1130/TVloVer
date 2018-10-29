@@ -13,7 +13,8 @@ const composeEnhancers = process.env.NODE_ENV !== 'production' ?
   compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk, logger),
+  // applyMiddleware(thunk, logger),
+  applyMiddleware(thunk),
 );
 
 const store = createStore(rootReducer, persistedState, enhancer);
