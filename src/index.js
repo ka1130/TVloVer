@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
 import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-import store from 'redux/store'
-
+import Root from 'Root';
 import App from 'components/App';
 import Watchlist from 'components/App/Watchlist';
 import Header from 'components/App/Header';
@@ -13,7 +11,7 @@ import Show from 'components/App/Show';
 import './index.css';
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Root>
     <HashRouter>
       <>
         <Header />
@@ -25,6 +23,6 @@ ReactDOM.render(
         </Switch>
       </>
     </HashRouter>
-  </Provider>,
+  </Root>,
   document.getElementById('root'));
 
