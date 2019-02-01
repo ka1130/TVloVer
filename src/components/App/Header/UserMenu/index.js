@@ -12,7 +12,7 @@ class UserMenu extends Component {
     if (this.props.auth) {
       return <Link to="/" onClick={() => this.props.changeAuth(false)}>Log Out</Link>
     } else {
-      return <Link to="/" onClick={() => this.props.changeAuth(true)}>Log In</Link>
+      return <Link to="/my-account" onClick={() => this.props.changeAuth(true)}>Log In</Link>
     }
   }
 
