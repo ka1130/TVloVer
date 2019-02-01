@@ -10,9 +10,10 @@ import styles from './UserMenu.module.scss';
 class UserMenu extends Component {
   renderAuth() {
     if (this.props.auth) {
-      return <Link to="/" onClick={() => this.props.changeAuth(false)}>Log Out</Link>
+      return <button onClick={() => this.props.changeAuth(false)}>Log Out</button>
     } else {
-      return <Link to="/my-account" onClick={() => this.props.changeAuth(true)}>Log In</Link>
+      return <button onClick={() => this.props.changeAuth(true)}>Log In</button>
+      // return <Link to="/my-account" onClick={() => this.props.changeAuth(true)}>Log In</Link>
     }
   }
 

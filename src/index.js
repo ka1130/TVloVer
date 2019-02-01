@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route path="/shows/:id" component={Show} />
           <Route path="/page/:page" component={App} />
           <Route path="/watchlist" component={Watchlist} />
-          <Route path="/my-account" component={UserAccount} />
+          <Route path="/my-account" component={UserAccount}/>
           <Redirect exact path='/' to='/page/1'/>
         </Switch>
       </>
