@@ -32,6 +32,10 @@ class UserMenu extends Component {
               <li>
                 <Link to="/watchlist">Watchlist</Link>
               </li>
+              <li>
+                <Link to="/my-account">My account</Link>
+                {/* The above link is disabled for users that are not authed */}
+              </li>
             </ul>
           </li>
         </ul>
