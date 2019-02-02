@@ -1,58 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-
-import { changeAuth } from 'redux/actions/authActions';
 
 import GoogleAuth from 'components/App/GoogleAuth/index';
 
 import styles from './UserMenu.module.scss';
 
-class UserMenu extends Component {
-  renderAuth() {
-    if (this.props.auth) {
-      return <button onClick={() => this.props.changeAuth(false)}>Log Out</button>
-    } else {
-      return <button onClick={() => this.props.changeAuth(true)}>Log In</button>
-      // return <Link to="/my-account" onClick={() => this.props.changeAuth(true)}>Log In</Link>
-    }
-  }
-
-  render() {
-    return (
-      <nav role="navigation" className={styles.userMenuWrapper}>
-        <ul className={styles.menuList}>
-          <li>
-            <span className={styles.myAccount}>
-              <span>My account</span>
-            </span>
-            <ul className={styles.dropdown}>
-              <li>
-                {this.renderAuth()}
-              </li>
-              <li><GoogleAuth /></li>
-              <li>
-                <Link to="/watchlist">Watchlist</Link>
-              </li>
-              <li>
-                <Link to="/my-account">My account</Link>
-                {/* The above link is disabled for users that are not authed */}
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
+const UserMenu = () => {
+  return (
+    <nav role="navigation" className={styles.userMenuWrapper}>
+      <ul className={styles.menuList}>
+        <li>
+          <span className={styles.myAccount}>
+            <span>My account</span>
+          </span>
+          <ul className={styles.dropdown}>
+            <li><GoogleAuth /></li>
+            <li>
+              <Link to="/watchlist">Watchlist</Link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-});
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({ changeAuth }, dispatch)
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserMenu)
+export default UserMenu;

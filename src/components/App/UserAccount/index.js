@@ -2,7 +2,7 @@ import React from 'react';
 
 import requireAuth from 'components/App/requireAuth';
 
-const UserAccount = props => {
+const UserAccount = () => {
   return (
     <h3>User Account</h3>
   )

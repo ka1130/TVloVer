@@ -1,8 +1,14 @@
-import { CHANGE_AUTH } from 'redux/actions/types';
+import { SIGN_IN, SIGN_OUT } from 'redux/actions/types';
 
-export const changeAuth = isLoggedIn => {
+export const signIn = userId => {
   return {
-    type: CHANGE_AUTH,
-    payload: isLoggedIn
+    type: SIGN_IN,
+    payload: userId,
+  }
+}
+
+export const signOut = () => {
+  return {
+    type: SIGN_OUT,
   }
 }
