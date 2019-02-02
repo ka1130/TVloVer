@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 
 import { changeAuth } from 'redux/actions/authActions';
 
+import GoogleAuth from 'components/App/GoogleAuth/index';
+
 import styles from './UserMenu.module.scss';
 
 class UserMenu extends Component {
@@ -29,6 +31,7 @@ class UserMenu extends Component {
               <li>
                 {this.renderAuth()}
               </li>
+              <li><GoogleAuth /></li>
               <li>
                 <Link to="/watchlist">Watchlist</Link>
               </li>

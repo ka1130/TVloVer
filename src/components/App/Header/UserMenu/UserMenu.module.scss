@@ -32,6 +32,9 @@
   left: 0;
   display: none;
   width: 100%;
+  li {
+    border-bottom: 0.0625rem solid #FBF5F3;
+  }
 }
 
 .userMenuWrapper li:hover > .dropdown,
