@@ -6,21 +6,19 @@ import {
   
 import * as api from 'constants/apiQueries';
 
-export function fetchEpisodes(selectedCountry) {
-  return dispatch => {
-    dispatch(fetchEpisodesBegin());
-    return fetch(api.API_BASE + api.DATE_BASE + api.today + api.COUNTRY_BASE + selectedCountry)
-      .then(handleErrors)
-      .then(res => res.json())
-      .then(json => {
-        dispatch(fetchEpisodesSuccess(json));
-        return json;
-      })
-      .catch(error => dispatch(fetchEpisodesFailure(error)));
-  };
+export const fetchEpisodes = selectedCountry => dispatch => {
+  dispatch(fetchEpisodesBegin());
+  return fetch(api.API_BASE + api.DATE_BASE + api.today + api.COUNTRY_BASE + selectedCountry)
+    .then(handleErrors)
+    .then(res => res.json())
+    .then(json => {
+      dispatch(fetchEpisodesSuccess(json));
+      return json;
+    })
+    .catch(error => dispatch(fetchEpisodesFailure(error)));
 }
 
-function handleErrors(response) {
+const handleErrors = response => {
   if (!response.ok) {
     throw Error(response.statusText);
   }
